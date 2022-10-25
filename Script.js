@@ -1,23 +1,18 @@
 const d = new Date();
 const d_zero = new Date(d.getFullYear(), 0, 1, 0, 0, 0, 0);
 
+var wL = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+var mL = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+var mS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+
 // d_zero.setTime(0);
 // d_zero.setFullYear(d.getFullYear());
 // document.getElementsByClassName("month-text")[0].innerHTML = d_zero + " ------------------------- " + d;
 
-// let mata = 1;
-
 setInterval(function(){ 
     const d_now = new Date(); 
     // const d_now = new Date(d.getFullYear(), 0, 0, 0, 0, 0, 0);
-    
-    // if (mata == 1) {
-    //     d_now.setDate(2);
-    //     d_now.setHours(23);
-    //     d_now.setMinutes(59);
-    //     d_now.setSeconds(59);
-    //     mata = 11;
-    // }
 
     // d_now.setDate(31);
     // d_now.setHours(23);
@@ -67,5 +62,9 @@ setInterval(function(){
     document.getElementsByClassName("year-text")[0].innerHTML = "Year: " + Number(days_year*(100/(year_lenght-1))).toFixed(2) + "%";
     document.getElementsByClassName("year-bar")[0].style.width = days_year*(100/(year_lenght-1)) + "%";
 
-    document.getElementsByClassName("test")[0].innerHTML = d_now;
+    document.getElementsByClassName("week_day")[0].innerHTML = wL[d_now.getDay()];
+    document.getElementsByClassName("clock")[0].innerHTML = d_now.getHours() + ":" + d_now.getMinutes();
+    document.getElementsByClassName("date")[0].innerHTML = d_now.getDate() + " " + mS[d_now.getMonth()] + " " + d_now.getFullYear();
+
+    // document.getElementsByClassName("clock")[0].innerHTML = d_now;
 }, 1);
