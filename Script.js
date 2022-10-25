@@ -35,7 +35,7 @@ setInterval(function () {
     let days_month = d_now.getDate() - 1 + hours / 24;
     let days_year = -1 + hours / 24;
 
-    document.getElementsByClassName("second-text")[0].innerHTML = d_now.getMonth() + "Second: " + Number(miliseconds / 10).toFixed(2) + "%";
+    document.getElementsByClassName("second-text")[0].innerHTML = "Second: " + Number(miliseconds / 10).toFixed(2) + "%";
     document.getElementsByClassName("second-bar")[0].style.width = miliseconds / 10 + "%";
 
     document.getElementsByClassName("minute-text")[0].innerHTML = "Minute: " + Number(seconds * (100 / 60)).toFixed(2) + "%";
