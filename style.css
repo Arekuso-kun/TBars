@@ -36,7 +36,7 @@ body {
     background-color: #151525;
 }
 
-.bars {
+.container-bars, .container-christmas {
     display: block;
     position: relative;
     height: 50%;
@@ -44,16 +44,31 @@ body {
     padding: 30px;
 }
 
-.year-bar, .month-bar, .week-bar, .day-bar, .hour-bar, .minute-bar, .second-bar, .milisecond-bar {
+.container-christmas {
+    position:absolute;
+    top:10px;
+    right: 10px;
+    width: 300px;
+}
+
+.container-christmas .bar_bg {
+    margin-bottom: 10px;
+}
+
+.year-bar, .month-bar, .week-bar, .day-bar, .hour-bar, .minute-bar, .second-bar, .milisecond-bar, .christmas-bar {
     background: #fbf5ef;    
     height: 5px;
 } 
 
-.year-text, .month-text, .week-text, .day-text, .hour-text, .minute-text, .second-text, .milisecond-text, .test  {
+.year-text, .month-text, .week-text, .day-text, .hour-text, .minute-text, .second-text, .milisecond-text, .christmas-text, .christmas-text2  {
     position: relative;
     color: #fbf5ef;
     padding-left: 10px;
     text-align: left;
+}
+
+.christmas-text2 {
+    text-align: right;
 }
 
 .bar_bg {
@@ -74,7 +89,7 @@ body {
     transform: translate(-50%, -50%); */
 }
 
-.clock_date {
+.container-clock-date {
     position: relative;
     background-color: #fbf5ef;
     width: 285px;
