@@ -6,10 +6,6 @@ var wL = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Sat
 var mL = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 var mS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 
-// d_zero.setTime(0);
-// d_zero.setFullYear(d.getFullYear());
-// document.getElementsByClassName("month-text")[0].innerHTML = d_zero + " ------------------------- " + d;
-
 setInterval(function(){ 
     const d_now = new Date(); 
     // const d_now = new Date(d.getFullYear(), 0, 0, 0, 0, 0, 0);
@@ -18,8 +14,6 @@ setInterval(function(){
     // d_now.setHours(23);
     // d_now.setMinutes(59);
     // d_now.setSeconds(59);
-
-    // document.getElementsByClassName("test")[0].innerHTML = month_lenght[d_now.getMonth()];
 
     let miliseconds = (d_now.getTime() - d_zero.getTime()) % 1000;
     let seconds = d_now.getSeconds() + miliseconds/1000;
@@ -71,6 +65,4 @@ setInterval(function(){
         mm = "0" + mm;
     document.getElementsByClassName("clock")[0].innerHTML = hh + ":" + mm;
     document.getElementsByClassName("date")[0].innerHTML = d_now.getDate() + " " + mS[d_now.getMonth()] + " " + d_now.getFullYear();
-
-    // document.getElementsByClassName("clock")[0].innerHTML = d_now;
 }, 1);

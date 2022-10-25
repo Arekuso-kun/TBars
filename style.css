@@ -29,23 +29,23 @@ body {
 }
 
 .year-bar, .month-bar, .week-bar, .day-bar, .hour-bar, .minute-bar, .second-bar, .milisecond-bar {
-    height: 5px;
     background: #fbf5ef;    
+    height: 5px;
 } 
 
 .year-text, .month-text, .week-text, .day-text, .hour-text, .minute-text, .second-text, .milisecond-text, .test  {
+    position: relative;
     color: #fbf5ef;
     padding-left: 10px;
-    position: relative;
     text-align: left;
 }
 
 .bar_bg {
-    margin-bottom: 20px;
-    height: 5px;
-    background: #494d7e;
     position: relative;
+    background: #494d7e;
+    height: 5px;
     width: 100%;
+    margin-bottom: 20px;
     border-radius: 1px;
     overflow: hidden;
 
@@ -61,18 +61,20 @@ body {
 .clock_date {
     position: relative;
     background-color: #fbf5ef;
-    /* height: 200px; */
-    width: 320px;
+    width: 285px;
     margin: 30px;
-    padding: 30px;
+    padding: 20px;
+    padding-top: 35px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .week_day, .date {
     position: relative;
-    font-family: FontBig;
     color: #272744;
-    font-size: 30;
+    font-family: FontBig;
     bottom: 10px;
+    font-size: 30;
 }
 
 .date {
@@ -81,8 +83,8 @@ body {
 
 .clock {
     position: relative;
-    font-family: FontBig;
     color: #151525;
-    font-size: 50;
+    font-family: FontBig;
     bottom: 10px;
+    font-size: 50;
 }
