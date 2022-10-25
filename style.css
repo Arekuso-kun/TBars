@@ -1,0 +1,51 @@
+@font-face {
+    font-family: customFont;
+    src: url(fonts/Minecraftia-Regular.ttf);
+  }
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: customFont;
+    font-size: 12;
+}
+
+
+body {
+    background-color: rgb(15, 0, 29);
+}
+
+.bars {
+    position: relative;
+    height: 100%;
+    width: 500px;
+    padding: 30px;
+}
+
+.year-bar, .month-bar, .week-bar, .day-bar, .hour-bar, .minute-bar, .second-bar, .milisecond-bar {
+    margin-bottom: 30px;
+    height: 5px;
+    background: lavender;
+    /* left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); */
+} 
+
+.year-text, .month-text, .week-text, .day-text, .hour-text, .minute-text, .second-text, .milisecond-text, .test  {
+    color: lavender;
+    padding: 10px;
+    position: relative;
+}
+
+.bar_bg {
+    margin-bottom: 30px;
+    height: 5px;
+    background: rgb(69, 69, 75);
+    position: relative;
+    width: 100%;
+    border-radius: 1px;
+    overflow: hidden;
+    /* left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); */
+}
