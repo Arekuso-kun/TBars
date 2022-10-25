@@ -15,6 +15,15 @@
     font-size: 12;
 }
 
+.bg-image {
+    position: relative;
+    background-image: url('bg/power.png');
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
+}
+
 body {
     position: relative;
     background-color: #151525;
