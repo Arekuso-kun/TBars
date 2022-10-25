@@ -63,7 +63,13 @@ setInterval(function(){
     document.getElementsByClassName("year-bar")[0].style.width = days_year*(100/(year_lenght-1)) + "%";
 
     document.getElementsByClassName("week_day")[0].innerHTML = wL[d_now.getDay()];
-    document.getElementsByClassName("clock")[0].innerHTML = d_now.getHours() + ":" + d_now.getMinutes();
+    let hh = d_now.getHours();
+    let mm = d_now.getMinutes();
+    if(hh < 10)
+        hh = "0" + hh;
+    if(mm < 10)
+        mm = "0" + mm;
+    document.getElementsByClassName("clock")[0].innerHTML = hh + ":" + mm;
     document.getElementsByClassName("date")[0].innerHTML = d_now.getDate() + " " + mS[d_now.getMonth()] + " " + d_now.getFullYear();
 
     // document.getElementsByClassName("clock")[0].innerHTML = d_now;
