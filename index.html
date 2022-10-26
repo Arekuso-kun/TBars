@@ -44,14 +44,16 @@
                     <div class="bar" id="minute-bar"></div>
                 </div>
 
-                <div class="text" id="second-text">Second: error</div>
-                <div class="bar_bg">
-                    <div class="bar" id="second-bar"></div>
+                <div id="second">
+                    <div class="text" id="second-text">Second: error</div>
+                    <div class="bar_bg">
+                        <div class="bar" id="second-bar"></div>
+                    </div>
                 </div>
-
                 <!-- <div class="test">test</div> -->
             </div>
             <div class="containder-tr">
+
                 <div class="container-christmas">
                     <div class="text" id="christmas-text">Christmas: error</div>
                     <div class="bar_bg">
@@ -59,12 +61,26 @@
                     </div>
                     <div class="text" id="christmas-text2">Christmas: error</div>
                 </div>
-                <div class="settings">
+
+                <div class="settings" onclick="OpenCloseSettings()">
                     <img src="bg/settings-icon.png" alt="settings-icon" class="s_icon">
                 </div>
-                <div class="dropdown">
 
+                <div class="dropdown">
+                    <div class="option1">
+                        <label for="option1" class="option">
+                            <input type="checkbox" id="option1" onclick="ToggleSecondsBar()">
+                        </label>
+                        <div class="text-TSB">Toggle Seconds Bar</div>
+                    </div>
+                    <div class="option2">
+                        <label for="option2" class="option">
+                            <input type="checkbox" id="option2" onclick="SmoothBar()">
+                        </label>
+                        <div class="text-TSB">Smooth Bar</div>
+                    </div>
                 </div>
+
             </div>
             <div class="container-clock-date">
                 <div class="week_day"></div>

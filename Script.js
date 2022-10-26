@@ -1,3 +1,29 @@
+function ToggleSecondsBar() {
+    if (document.getElementById("option1").checked)
+        document.getElementById("second").style.display = "block";
+    else
+        document.getElementById("second").style.display = "none";
+}
+
+function SmoothBar() {
+    if (document.getElementById("option2").checked)
+        return true;
+    else
+        return false;
+}
+
+// document.getElementsByClassName("dropdown")[0].style.opacity = 0;
+document.getElementsByClassName("dropdown")[0].style.display = "none";
+function OpenCloseSettings() {
+    if(document.getElementsByClassName("dropdown")[0].style.display == "none") {
+        // document.getElementsByClassName("dropdown")[0].style.opacity = 1;
+        document.getElementsByClassName("dropdown")[0].style.display = "block";
+    }
+    else {
+        // document.getElementsByClassName("dropdown")[0].style.opacity = 0 ;
+        document.getElementsByClassName("dropdown")[0].style.display = "none";
+    }
+}
 var wL = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 var mL = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -36,7 +62,7 @@ setInterval(function () {
     // d_now.setSeconds(0);
 
     let miliseconds = (d_now.getTime() - d_zero.getTime()) % 1000;
-    let seconds = d_now.getSeconds() + miliseconds / 1000;
+    let seconds = d_now.getSeconds();
     let minutes = d_now.getMinutes() + seconds / 60;
     let hours = d_now.getHours() + minutes / 60;
 
@@ -46,7 +72,9 @@ setInterval(function () {
 
     let days_month = d_now.getDate() - 1 + hours / 24;
     let days_year = -1 + hours / 24;
-
+    
+    if(SmoothBar()) seconds += miliseconds / 1000;
+    
     document.getElementById("second-text").innerHTML = "Second: " + Number(miliseconds / 10).toFixed(2) + "%";
     document.getElementById("second-bar").style.width = miliseconds / 10 + "%";
 
@@ -95,4 +123,6 @@ setInterval(function () {
     document.getElementById("christmas-text").innerHTML = "Christmas: " + Number(time_from_last_chrismas * (100 / one_year)).toFixed(2) + "%";
     document.getElementById("christmas-bar").style.width = time_from_last_chrismas * (100 / one_year) + "%";
     document.getElementById("christmas-text2").innerHTML = Number(days_until_christmas).toFixed(0) + " days until Christmas !";
+
+    // setTimeout(f, SmoothBar());
 }, 1);

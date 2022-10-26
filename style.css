@@ -31,7 +31,6 @@
 
 .containder-tr {
     display: block;
-    justify-content: center;
     position: absolute;
     top: 0px;
     right: 0px;
@@ -43,6 +42,7 @@
     width: 40px;
     padding: 3px;
     margin: 40px;
+    margin-left: 100%;
     margin-top: 0px;
     border-radius: 10px;
     background-size: contain;
@@ -69,7 +69,37 @@
 }
 
 .dropdown {
+    position: relative;
+    display: none;
+    background-color: #fbf5ef;
+    float: right;
+    padding: 20px;
+    margin-right: 40px;
+    border-radius: 10px;
+    overflow: hidden;
+    /* opacity: 0; */
+    transition: 1s;
 
+    /* padding: 0 18px;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1; */
+}
+
+.option1, .option2 {
+    display: flex;
+    /* float: left; */
+}
+
+.text-TSB {
+    margin-left: 10px;
+    margin-top: 8px;
+}
+
+.option {
+    margin-top: auto;
+    margin-bottom: auto;
+    accent-color: #494d7e;
 }
 
 .container-bars, .container-christmas {
