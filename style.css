@@ -9,45 +9,77 @@
 }
 
 * {
+    position: relative;
     padding: 0;
     margin: 0;
     font-family: FontBars;
     font-size: 12;
 }
 
-.bg-image {
+.background {
     position: relative;
-    background-image: url('bg/powerCrop.png');
     height: 100%;
+    width: 100%;
+    background-image: url('bg/powerNoBG.png');
+    background-color: #151525;
     background-repeat: no-repeat;
     background-size: contain;
     background-position-x: right;
     background-position-y: bottom;
+    background-blend-mode: overlay;
 }
 
-body {
-    /* background: radial-gradient(
-        farthest-corner at 100% 100%,
-        #494d7e ,
-        #151525 
-    ); */
-    height: 100%;
+.containder-tr {
+    display: block;
+    justify-content: center;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.settings {
     position: relative;
-    background-color: #151525;
+    height: 40px;
+    width: 40px;
+    padding: 3px;
+    margin: 40px;
+    margin-top: 0px;
+    border-radius: 10px;
+    background-size: contain;
+    background-blend-mode: overlay;
+    background-color: #494d7e00;
+    float: right;
+    transition: 0.3s;
+}
+
+.settings:hover {
+    background-color: #494d7e80;
+    transition: 0.3s;
+}
+
+.s_icon {
+    position: relative;
+    max-width:100%;
+    max-height:100%;
+    filter: invert(100%);
+}
+
+.s_icon:hover {
+    opacity: 1;
+}
+
+.dropdown {
+
 }
 
 .container-bars, .container-christmas {
-    display: block;
     position: relative;
-    height: 50%;
     width: 500px;
     padding: 30px;
 }
 
 .container-christmas {
-    position:absolute;
-    top:10px;
-    right: 10px;
+    position: relative;
     width: 300px;
 }
 
@@ -55,19 +87,19 @@ body {
     margin-bottom: 10px;
 }
 
-.year-bar, .month-bar, .week-bar, .day-bar, .hour-bar, .minute-bar, .second-bar, .milisecond-bar, .christmas-bar {
+.bar {
     background: #fbf5ef;    
     height: 5px;
 } 
 
-.year-text, .month-text, .week-text, .day-text, .hour-text, .minute-text, .second-text, .milisecond-text, .christmas-text, .christmas-text2  {
+.text  {
     position: relative;
     color: #fbf5ef;
     padding-left: 10px;
     text-align: left;
 }
 
-.christmas-text2 {
+#christmas-text2 {
     text-align: right;
 }
 
