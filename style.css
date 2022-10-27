@@ -21,7 +21,7 @@
     height: 100%;
     width: 100%;
     background-image: url('bg/powerNoBG.png');
-    background-color: #151525;
+    background-color: #1e1d3a;
     background-repeat: no-repeat;
     background-size: contain;
     background-position-x: right;
@@ -37,7 +37,8 @@
 }
 
 .settings {
-    position: relative;
+    border: none;
+    cursor: pointer;
     height: 40px;
     width: 40px;
     padding: 3px;
@@ -46,7 +47,6 @@
     margin-top: 0px;
     border-radius: 10px;
     background-size: contain;
-    background-blend-mode: overlay;
     background-color: #494d7e00;
     float: right;
     transition: 0.3s;
@@ -69,8 +69,8 @@
 }
 
 .dropdown {
-    position: relative;
-    display: none;
+    position: absolute;
+    display: block;
     background-color: #fbf5ef;
     float: right;
     padding: 20px;
@@ -78,7 +78,8 @@
     border-radius: 10px;
     overflow: hidden;
     /* opacity: 0; */
-    transition: 1s;
+    transition: 0.4s;
+    opacity: 0;
 
     /* padding: 0 18px;
     overflow: hidden;

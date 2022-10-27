@@ -13,17 +13,16 @@ function SmoothBar() {
 }
 
 // document.getElementsByClassName("dropdown")[0].style.opacity = 0;
-document.getElementsByClassName("dropdown")[0].style.display = "none";
 function OpenCloseSettings() {
-    if(document.getElementsByClassName("dropdown")[0].style.display == "none") {
-        // document.getElementsByClassName("dropdown")[0].style.opacity = 1;
-        document.getElementsByClassName("dropdown")[0].style.display = "block";
+    if(document.getElementsByClassName("dropdown")[0].style.opacity == 0) {
+        document.getElementsByClassName("dropdown")[0].style.opacity = 1;
     }
     else {
-        // document.getElementsByClassName("dropdown")[0].style.opacity = 0 ;
-        document.getElementsByClassName("dropdown")[0].style.display = "none";
+        document.getElementsByClassName("dropdown")[0].style.opacity = 0 ;
     }
+    console.log("clicked");
 }
+
 var wL = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 var mL = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
