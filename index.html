@@ -11,81 +11,85 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container-main">
         <div class="background">
-            <div class="container-bars">
-                <div class="text" id="year-text">Year: error</div>
-                <div class="bar_bg">
-                    <div class="bar" id="year-bar"></div>
-                </div>
-
-                <div class="text" id="month-text">Month: error</div>
-                <div class="bar_bg">
-                    <div class="bar" id="month-bar"></div>
-                </div>
-
-                <div class="text" id="week-text">Week: error</div>
-                <div class="bar_bg">
-                    <div class="bar" id="week-bar"></div>
-                </div>
-
-                <div class="text" id="day-text">Day: error</div>
-                <div class="bar_bg">
-                    <div class="bar" id="day-bar"></div>
-                </div>
-
-                <div class="text" id="hour-text">Hour: error</div>
-                <div class="bar_bg">
-                    <div class="bar" id="hour-bar"></div>
-                </div>
-
-                <div class="text" id="minute-text">Minute: error</div>
-                <div class="bar_bg">
-                    <div class="bar" id="minute-bar"></div>
-                </div>
-
-                <div id="second">
-                    <div class="text" id="second-text">Second: error</div>
+            <div class="container container-left">
+                <div class="container-bars">
+                    <div class="text" id="year-text">Year: error</div>
                     <div class="bar_bg">
-                        <div class="bar" id="second-bar"></div>
+                        <div class="bar" id="year-bar"></div>
                     </div>
-                </div>
-                <!-- <div class="test">test</div> -->
-            </div>
-            <div class="containder-tr">
 
-                <div class="container-christmas">
-                    <div class="text" id="christmas-text">Christmas: error</div>
+                    <div class="text" id="month-text">Month: error</div>
                     <div class="bar_bg">
-                        <div class="bar" id="christmas-bar"></div>
+                        <div class="bar" id="month-bar"></div>
                     </div>
-                    <div class="text" id="christmas-text2">Christmas: error</div>
+
+                    <div class="text" id="week-text">Week: error</div>
+                    <div class="bar_bg">
+                        <div class="bar" id="week-bar"></div>
+                    </div>
+
+                    <div class="text" id="day-text">Day: error</div>
+                    <div class="bar_bg">
+                        <div class="bar" id="day-bar"></div>
+                    </div>
+
+                    <div class="text" id="hour-text">Hour: error</div>
+                    <div class="bar_bg">
+                        <div class="bar" id="hour-bar"></div>
+                    </div>
+
+                    <div class="text" id="minute-text">Minute: error</div>
+                    <div class="bar_bg">
+                        <div class="bar" id="minute-bar"></div>
+                    </div>
+
+                    <div id="second">
+                        <div class="text" id="second-text">Second: error</div>
+                        <div class="bar_bg">
+                            <div class="bar" id="second-bar"></div>
+                        </div>
+                    </div>
+                    <!-- <div class="test">test</div> -->
                 </div>
-
-                <button class="settings" onclick="OpenCloseSettings()">
-                    <img src="bg/settings-icon.png" alt="settings-icon" class="s_icon">
-                </button>
-
-                <div class="dropdown">
-                    <div class="option1">
-                        <label for="option1" class="option">
-                            <input type="checkbox" id="option1" onclick="ToggleSecondsBar()">
-                        </label>
-                        <div class="text-TSB">Toggle Seconds Bar</div>
-                    </div>
-                    <div class="option2">
-                        <label for="option2" class="option">
-                            <input type="checkbox" id="option2" onclick="SmoothBar()">
-                        </label>
-                        <div class="text-TSB">Smooth Bar</div>
-                    </div>
+                <div class="container-clock-date">
+                    <div class="week_day"></div>
+                    <div class="clock"></div>
+                    <div class="date"></div>
                 </div>
-
             </div>
-            <div class="container-clock-date">
-                <div class="week_day"></div>
-                <div class="clock"></div>
-                <div class="date"></div>
+            <div class="container container-right">
+                <div class="containder-tr">
+
+                    <div class="container-christmas">
+                        <div class="text" id="christmas-text">Christmas: error</div>
+                        <div class="bar_bg">
+                            <div class="bar" id="christmas-bar"></div>
+                        </div>
+                        <div class="text" id="christmas-text2">Christmas: error</div>
+                    </div>
+
+                    <button class="settings" onclick="OpenCloseSettings()">
+                        <img src="bg/settings-icon.png" alt="settings-icon" class="s_icon">
+                    </button>
+
+                    <div class="dropdown">
+                        <div class="options option1">
+                            <label for="option1" class="option">
+                                <input type="checkbox" id="option1" onclick="ToggleSecondsBar()">
+                            </label>
+                            <div class="text-TSB">Toggle Seconds Bar</div>
+                        </div>
+                        <div class="options option2">
+                            <label for="option2" class="option">
+                                <input type="checkbox" id="option2" onclick="SmoothBar()">
+                            </label>
+                            <div class="text-TSB">Smooth Bar</div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>

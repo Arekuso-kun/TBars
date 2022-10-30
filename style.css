@@ -1,3 +1,7 @@
+:root {
+    --background-color: #1e1d3a;
+}
+
 @font-face {
     font-family: FontBars;
     src: url(fonts/Minecraftia-Regular.ttf);
@@ -9,31 +13,38 @@
 }
 
 * {
-    position: relative;
     padding: 0;
     margin: 0;
     font-family: FontBars;
     font-size: 12;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+body {
+    overflow: hidden;
 }
 
 .background {
-    position: relative;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
     height: 100%;
     width: 100%;
     background-image: url('bg/powerNoBG.png');
-    background-color: #1e1d3a;
+    background-color: var(--background-color);
     background-repeat: no-repeat;
     background-size: contain;
-    background-position-x: right;
-    background-position-y: bottom;
+    background-position: bottom right;
     background-blend-mode: overlay;
 }
 
-.containder-tr {
-    display: block;
-    position: absolute;
-    top: 0px;
-    right: 0px;
+.container {
+    padding: 2.5%;
+    flex-shrink: 1;
+    max-width: 100%;
+    max-height: 100vh;
 }
 
 .settings {
@@ -42,9 +53,9 @@
     height: 40px;
     width: 40px;
     padding: 3px;
-    margin: 40px;
-    margin-left: 100%;
-    margin-top: 0px;
+    margin: 10px;
+    /* margin-left: 100%;
+    margin-top: 0px; */
     border-radius: 10px;
     background-size: contain;
     background-color: #494d7e00;
@@ -58,7 +69,6 @@
 }
 
 .s_icon {
-    position: relative;
     max-width:100%;
     max-height:100%;
     filter: invert(100%);
@@ -70,24 +80,24 @@
 
 .dropdown {
     position: absolute;
-    display: block;
     background-color: #fbf5ef;
     float: right;
-    padding: 20px;
-    margin-right: 40px;
-    border-radius: 10px;
+    border-radius: 10px 0 0 10px;
+    right: -10px;
+    top: 200px;
+    padding: 10px;
     overflow: hidden;
-    /* opacity: 0; */
-    transition: 0.4s;
+    transition: 0.3s;
+    transition-timing-function: ease-in-out;
     opacity: 0;
-
-    /* padding: 0 18px;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
-    background-color: #f1f1f1; */
 }
 
-.option1, .option2 {
+.dropdown.active {
+    opacity: 1;
+    transform: translateX(-10px);
+}
+
+.options {
     display: flex;
     /* float: left; */
 }
@@ -103,14 +113,11 @@
     accent-color: #494d7e;
 }
 
-.container-bars, .container-christmas {
-    position: relative;
+.container-bars {
     width: 500px;
-    padding: 30px;
 }
 
 .container-christmas {
-    position: relative;
     width: 300px;
 }
 
@@ -124,7 +131,6 @@
 } 
 
 .text  {
-    position: relative;
     color: #fbf5ef;
     padding-left: 10px;
     text-align: left;
@@ -135,7 +141,6 @@
 }
 
 .bar_bg {
-    position: relative;
     background: #494d7e;
     height: 5px;
     width: 100%;
@@ -154,8 +159,9 @@
 
 .container-clock-date {
     position: relative;
+    display: inline-block;
+    flex-direction: column;
     background-color: #fbf5ef;
-    width: 285px;
     margin: 30px;
     padding: 20px;
     padding-top: 35px;
@@ -172,6 +178,7 @@
 }
 
 .date {
+    white-space: nowrap;
     padding-top: 20px;
 }
 

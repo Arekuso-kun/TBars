@@ -1,3 +1,38 @@
+ function loadFromLocalStorage(valueName) {
+    try {
+        const serializedValue = localStorage.getItem(`${valueName}`);
+        if (serializedValue === null || serializedValue === undefined || serializedValue === 'undefined') {
+            return undefined;
+        }
+
+        return JSON.parse(serializedValue);
+    } catch (err) {
+        console.error(err);
+        return undefined;
+    }
+}
+
+ function removeFromLocalStorage(valueName) {
+    try {
+        localStorage.removeItem(`${valueName}`);
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+ function saveToLocalStorage(valueName, value) {
+    try {
+        const serializedState = JSON.stringify(value);
+        localStorage.setItem(`${valueName}`, serializedState);
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+
+saveToLocalStorage('wow', 'ppp');
+console.log(loadFromLocalStorage('wow'));
+
 function ToggleSecondsBar() {
     if (document.getElementById("option1").checked)
         document.getElementById("second").style.display = "block";
@@ -14,12 +49,8 @@ function SmoothBar() {
 
 // document.getElementsByClassName("dropdown")[0].style.opacity = 0;
 function OpenCloseSettings() {
-    if(document.getElementsByClassName("dropdown")[0].style.opacity == 0) {
-        document.getElementsByClassName("dropdown")[0].style.opacity = 1;
-    }
-    else {
-        document.getElementsByClassName("dropdown")[0].style.opacity = 0 ;
-    }
+    document.querySelector(".dropdown").classList.toggle('active');
+    document.querySelector(":root").style.setProperty("--background-color", "purple");
     console.log("clicked");
 }
 
@@ -72,7 +103,8 @@ setInterval(function () {
     let days_month = d_now.getDate() - 1 + hours / 24;
     let days_year = -1 + hours / 24;
     
-    if(SmoothBar()) seconds += miliseconds / 1000;
+    if(SmoothBar())
+        seconds += miliseconds / 1000;
     
     document.getElementById("second-text").innerHTML = "Second: " + Number(miliseconds / 10).toFixed(2) + "%";
     document.getElementById("second-bar").style.width = miliseconds / 10 + "%";
