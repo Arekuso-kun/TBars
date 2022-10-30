@@ -1,5 +1,28 @@
 :root {
-    --background-color: #1e1d3a;
+    --background-color: #15152e;
+    --bar-color: #494d7e;
+    --mid-color: #494d7e;
+    --bright-color: #ecedf2;
+
+    --color1_DARK: #1f0912;
+    --color1_MID: #460e2b;
+    --color1_LIGHT: #7c183c;
+    --color1_BRIGHT: #fff3f1;
+
+    --color2_DARK: #07172b;
+    --color2_MID: #203562;
+    --color2_LIGHT: #1e579c;
+    --color2_BRIGHT: #f1ffff;
+    
+    --color3_DARK: #0a2b1d;
+    --color3_MID: #1e7b55;
+    --color3_LIGHT: #239063;
+    --color3_BRIGHT: #e9f3ef;
+
+    --color4_DARK: #03292a;
+    --color4_MID: #097377;
+    --color4_LIGHT: #0b8a8f ;
+    --color4_BRIGHT: #e6f3f3;
 }
 
 @font-face {
@@ -80,7 +103,7 @@ body {
 
 .dropdown {
     position: absolute;
-    background-color: #fbf5ef;
+    background-color: var(--bright-color);
     float: right;
     border-radius: 10px 0 0 10px;
     right: -10px;
@@ -102,15 +125,25 @@ body {
     /* float: left; */
 }
 
-.text-TSB {
-    margin-left: 10px;
-    margin-top: 8px;
+label {
+    padding-top: 10px;
+    padding-right: 10px;
 }
 
-.option {
-    margin-top: auto;
-    margin-bottom: auto;
-    accent-color: #494d7e;
+input {
+    margin: 10px;
+    accent-color: var(--bar-color);
+}
+
+.option3 input {
+    display: none;
+}
+
+.checkmark-container {
+    width: 25px;
+    height: 25px;
+    border-radius: 30%;
+    margin: 5px;
 }
 
 .container-bars {
@@ -126,12 +159,12 @@ body {
 }
 
 .bar {
-    background: #fbf5ef;    
+    background: var(--bright-color);    
     height: 5px;
 } 
 
 .text  {
-    color: #fbf5ef;
+    color: var(--bright-color);
     padding-left: 10px;
     text-align: left;
 }
@@ -141,16 +174,16 @@ body {
 }
 
 .bar_bg {
-    background: #494d7e;
+    background: var(--bar-color);
     height: 5px;
     width: 100%;
     margin-bottom: 20px;
     border-radius: 1px;
     overflow: hidden;
 
-    border-bottom: 1px;
+    /* border-bottom: 1px;
     border-bottom-color: #272744 ;
-    border-bottom-style: solid;
+    border-bottom-style: solid; */
 
     /* left: 50%;
     top: 50%;
@@ -161,7 +194,7 @@ body {
     position: relative;
     display: inline-block;
     flex-direction: column;
-    background-color: #fbf5ef;
+    background-color: var(--bright-color);
     margin: 30px;
     padding: 20px;
     padding-top: 35px;
@@ -171,7 +204,7 @@ body {
 
 .week_day, .date {
     position: relative;
-    color: #272744;
+    color: var(--mid-color);
     font-family: FontBig;
     bottom: 10px;
     font-size: 30;
@@ -184,7 +217,7 @@ body {
 
 .clock {
     position: relative;
-    color: #151525;
+    color: var(--background-color);
     font-family: FontBig;
     bottom: 10px;
     font-size: 50;

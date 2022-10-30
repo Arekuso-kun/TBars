@@ -1,4 +1,4 @@
- function loadFromLocalStorage(valueName) {
+function loadFromLocalStorage(valueName) {
     try {
         const serializedValue = localStorage.getItem(`${valueName}`);
         if (serializedValue === null || serializedValue === undefined || serializedValue === 'undefined') {
@@ -12,7 +12,7 @@
     }
 }
 
- function removeFromLocalStorage(valueName) {
+function removeFromLocalStorage(valueName) {
     try {
         localStorage.removeItem(`${valueName}`);
     } catch (err) {
@@ -20,7 +20,7 @@
     }
 }
 
- function saveToLocalStorage(valueName, value) {
+function saveToLocalStorage(valueName, value) {
     try {
         const serializedState = JSON.stringify(value);
         localStorage.setItem(`${valueName}`, serializedState);
@@ -29,9 +29,20 @@
     }
 }
 
-
-saveToLocalStorage('wow', 'ppp');
+// test
+saveToLocalStorage('wow', 'test');
 console.log(loadFromLocalStorage('wow'));
+
+
+document.querySelectorAll("input[name='color']").forEach(color_box =>{
+    color_box.onclick = () => {
+        document.querySelector(":root").style.setProperty('--background-color', "var(--" + color_box.value + "_DARK)");
+        document.querySelector(":root").style.setProperty('--mid-color', "var(--" + color_box.value + "_MID)");
+        document.querySelector(":root").style.setProperty('--bar-color', "var(--" + color_box.value + "_LIGHT)");
+        document.querySelector(":root").style.setProperty('--bright-color', "var(--" + color_box.value + "_BRIGHT)");
+        console.log(color_box.value + " loaded !");
+    }
+});
 
 function ToggleSecondsBar() {
     if (document.getElementById("option1").checked)
@@ -50,8 +61,7 @@ function SmoothBar() {
 // document.getElementsByClassName("dropdown")[0].style.opacity = 0;
 function OpenCloseSettings() {
     document.querySelector(".dropdown").classList.toggle('active');
-    document.querySelector(":root").style.setProperty("--background-color", "purple");
-    console.log("clicked");
+    console.log("Button clicked !");
 }
 
 var wL = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -61,7 +71,7 @@ var mS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct
 
 setInterval(function () {
     const d_now = new Date();
-    const d_zero = new Date(d_now.getFullYear(), 0, 1, 0, 0, 0, 0); 
+    const d_zero = new Date(d_now.getFullYear(), 0, 1, 0, 0, 0, 0);
     const d_christmas = new Date(d_now.getFullYear(), 11, 25, 0, 0, 0, 0);
     const d_last_christmas = new Date(d_now.getFullYear() - 1, 11, 25, 0, 0, 0, 0);
 
@@ -71,12 +81,12 @@ setInterval(function () {
     // d_now.setMinutes(0);
     // d_now.setSeconds(0);
 
-    let t = d_now.getTime()/100 - d_christmas.getTime()/100;
-    if(t > 0) {
+    let t = d_now.getTime() / 100 - d_christmas.getTime() / 100;
+    if (t > 0) {
         d_last_christmas.setFullYear(d_last_christmas.getFullYear() + 1);
         d_christmas.setFullYear(d_christmas.getFullYear() + 1);
     }
-    
+
 
     // d_now.setFullYear(2022);
     // d_now.setMonth(11);
@@ -102,10 +112,10 @@ setInterval(function () {
 
     let days_month = d_now.getDate() - 1 + hours / 24;
     let days_year = -1 + hours / 24;
-    
-    if(SmoothBar())
+
+    if (SmoothBar())
         seconds += miliseconds / 1000;
-    
+
     document.getElementById("second-text").innerHTML = "Second: " + Number(miliseconds / 10).toFixed(2) + "%";
     document.getElementById("second-bar").style.width = miliseconds / 10 + "%";
 
@@ -147,8 +157,8 @@ setInterval(function () {
 
     let one_year = d_christmas.getTime() - d_last_christmas.getTime();
     let time_from_last_chrismas = d_now.getTime() - d_last_christmas.getTime();
-    let days_until_christmas = year_lenght-days_year-7;
-    if(days_until_christmas < 0) {
+    let days_until_christmas = year_lenght - days_year - 7;
+    if (days_until_christmas < 0) {
         days_until_christmas += year_lenght;
     }
     document.getElementById("christmas-text").innerHTML = "Christmas: " + Number(time_from_last_chrismas * (100 / one_year)).toFixed(2) + "%";
