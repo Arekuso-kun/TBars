@@ -1,28 +1,33 @@
 :root {
     --background-color: #15152e;
-    --bar-color: #494d7e;
-    --mid-color: #494d7e;
+    --bar-color: #2A2A5B;
+    --mid-color: #2A2A5B;
     --bright-color: #ecedf2;
 
-    --color1_DARK: #1f0912;
-    --color1_MID: #460e2b;
-    --color1_LIGHT: #7c183c;
-    --color1_BRIGHT: #fff3f1;
+    --color1_DARK: #280610;
+    --color1_MID: #590d24;
+    --color1_LIGHT: #590d24;
+    --color1_BRIGHT: #ecedf2;
 
-    --color2_DARK: #07172b;
-    --color2_MID: #203562;
-    --color2_LIGHT: #1e579c;
-    --color2_BRIGHT: #f1ffff;
+    --color2_DARK: #051c2e;
+    --color2_MID: #0b3b60;
+    --color2_LIGHT: #0b3b60;
+    --color2_BRIGHT: #ecedf2;
     
-    --color3_DARK: #0a2b1d;
-    --color3_MID: #1e7b55;
-    --color3_LIGHT: #239063;
-    --color3_BRIGHT: #e9f3ef;
+    --color3_DARK: #071f12;
+    --color3_MID: #114B2C;
+    --color3_LIGHT: #114B2C;
+    --color3_BRIGHT: #ecedf2;
 
-    --color4_DARK: #03292a;
-    --color4_MID: #097377;
-    --color4_LIGHT: #0b8a8f ;
-    --color4_BRIGHT: #e6f3f3;
+    --color4_DARK: #441b00;
+    --color4_MID: #8F3900;
+    --color4_LIGHT: #8F3900;
+    --color4_BRIGHT: #ecedf2;
+
+    --color5_DARK: #08090C;
+    --color5_MID: #1B1D27;
+    --color5_LIGHT: #1B1D27;
+    --color5_BRIGHT: #ecedf2;
 }
 
 @font-face {
