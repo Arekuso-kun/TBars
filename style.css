@@ -1,33 +1,33 @@
 :root {
-    --background-color: #15152e;
-    --bar-color: #2A2A5B;
-    --mid-color: #2A2A5B;
-    --bright-color: #ecedf2;
+    --background-color: 21, 21, 46;
+    --bar-color: 42, 42, 91;
+    --mid-color: 42, 42, 91;
+    --bright-color: 236, 237, 242;
 
-    --color1_DARK: #280610;
-    --color1_MID: #590d24;
-    --color1_LIGHT: #590d24;
-    --color1_BRIGHT: #ecedf2;
+    --color1_DARK: 40, 6, 16;
+    --color1_MID: 89, 13, 36;
+    --color1_LIGHT: 89, 13, 36;
+    --color1_BRIGHT: 236, 237, 242;
 
-    --color2_DARK: #051c2e;
-    --color2_MID: #0b3b60;
-    --color2_LIGHT: #0b3b60;
-    --color2_BRIGHT: #ecedf2;
+    --color2_DARK: 5, 28, 46;
+    --color2_MID: 11, 59, 96;
+    --color2_LIGHT: 11, 59, 96;
+    --color2_BRIGHT: 236, 237, 242;
     
-    --color3_DARK: #071f12;
-    --color3_MID: #114B2C;
-    --color3_LIGHT: #114B2C;
-    --color3_BRIGHT: #ecedf2;
+    --color3_DARK: 7, 31, 18;
+    --color3_MID: 17, 75, 44;
+    --color3_LIGHT: 17, 75, 44;
+    --color3_BRIGHT: 236, 237, 242;
 
-    --color4_DARK: #441b00;
-    --color4_MID: #8F3900;
-    --color4_LIGHT: #8F3900;
-    --color4_BRIGHT: #ecedf2;
+    --color4_DARK: 68, 27, 0;
+    --color4_MID: 143, 57, 0;
+    --color4_LIGHT: 143, 57, 0;
+    --color4_BRIGHT: 236, 237, 242;
 
-    --color5_DARK: #08090C;
-    --color5_MID: #1B1D27;
-    --color5_LIGHT: #1B1D27;
-    --color5_BRIGHT: #ecedf2;
+    --color5_DARK: 8, 9, 12;
+    --color5_MID: 27, 29, 39;
+    --color5_LIGHT: 27, 29, 39;
+    --color5_BRIGHT: 236, 237, 242;
 }
 
 @font-face {
@@ -61,7 +61,7 @@ body {
     height: 100%;
     width: 100%;
     background-image: url('bg/powerNoBG.png');
-    background-color: var(--background-color);
+    background-color: rgb(var(--background-color));
     background-repeat: no-repeat;
     background-size: contain;
     background-position: bottom right;
@@ -86,13 +86,13 @@ body {
     margin-top: 0px; */
     border-radius: 10px;
     background-size: contain;
-    background-color: #494d7e00;
+    background-color: rgba(var(--mid-color), 0);
     float: right;
     transition: 0.3s;
 }
 
 .settings:hover {
-    background-color: #494d7e80;
+    background-color: rgba(var(--mid-color), 0.8);
     transition: 0.3s;
 }
 
@@ -108,7 +108,7 @@ body {
 
 .dropdown {
     position: absolute;
-    background-color: var(--bright-color);
+    background-color: rgb(var(--bright-color));
     float: right;
     border-radius: 10px 0 0 10px;
     right: -10px;
@@ -137,7 +137,7 @@ label {
 
 input {
     margin: 10px;
-    accent-color: var(--bar-color);
+    accent-color: rgb(var(--bar-color));
 }
 
 .option3 input {
@@ -164,12 +164,12 @@ input {
 }
 
 .bar {
-    background: var(--bright-color);    
+    background: rgb(var(--bright-color));    
     height: 5px;
 } 
 
 .text  {
-    color: var(--bright-color);
+    color: rgb(var(--bright-color));
     padding-left: 10px;
     text-align: left;
 }
@@ -179,7 +179,7 @@ input {
 }
 
 .bar_bg {
-    background: var(--bar-color);
+    background: rgb(var(--bar-color));
     height: 5px;
     width: 100%;
     margin-bottom: 20px;
@@ -199,7 +199,7 @@ input {
     position: relative;
     display: inline-block;
     flex-direction: column;
-    background-color: var(--bright-color);
+    background-color: rgb(var(--bright-color));
     margin: 30px;
     padding: 20px;
     padding-top: 35px;
@@ -209,7 +209,7 @@ input {
 
 .week_day, .date {
     position: relative;
-    color: var(--mid-color);
+    color: rgb(var(--mid-color));
     font-family: FontBig;
     bottom: 10px;
     font-size: 30;
@@ -222,7 +222,7 @@ input {
 
 .clock {
     position: relative;
-    color: var(--background-color);
+    color: rgb(var(--background-color));
     font-family: FontBig;
     bottom: 10px;
     font-size: 50;
