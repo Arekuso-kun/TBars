@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">
     <link href="http://fonts.cdnfonts.com/css/common-pixel" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/4aa3143867.js" crossorigin="anonymous"></script>
 
-    <title>Document</title>
+    <title>Power</title>
 </head>
 
 <body>
@@ -16,38 +18,38 @@
             <div class="container container-left">
                 <div class="container-bars">
                     <div class="text" id="year-text">Year: error</div>
-                    <div class="bar_bg">
+                    <div class="bar-background">
                         <div class="bar" id="year-bar"></div>
                     </div>
 
                     <div class="text" id="month-text">Month: error</div>
-                    <div class="bar_bg">
+                    <div class="bar-background">
                         <div class="bar" id="month-bar"></div>
                     </div>
 
                     <div class="text" id="week-text">Week: error</div>
-                    <div class="bar_bg">
+                    <div class="bar-background">
                         <div class="bar" id="week-bar"></div>
                     </div>
 
                     <div class="text" id="day-text">Day: error</div>
-                    <div class="bar_bg">
+                    <div class="bar-background">
                         <div class="bar" id="day-bar"></div>
                     </div>
 
                     <div class="text" id="hour-text">Hour: error</div>
-                    <div class="bar_bg">
+                    <div class="bar-background">
                         <div class="bar" id="hour-bar"></div>
                     </div>
 
                     <div class="text" id="minute-text">Minute: error</div>
-                    <div class="bar_bg">
+                    <div class="bar-background">
                         <div class="bar" id="minute-bar"></div>
                     </div>
 
                     <div id="second">
                         <div class="text" id="second-text">Second: error</div>
-                        <div class="bar_bg">
+                        <div class="bar-background">
                             <div class="bar" id="second-bar"></div>
                         </div>
                     </div>
@@ -64,51 +66,63 @@
 
                     <div class="container-christmas">
                         <div class="text" id="christmas-text">Christmas: error</div>
-                        <div class="bar_bg">
+                        <div class="bar-background">
                             <div class="bar" id="christmas-bar"></div>
                         </div>
                         <div class="text" id="christmas-text2">Christmas: error</div>
                     </div>
 
-                    <button class="settings" onclick="OpenCloseSettings()">
-                        <img src="bg/settings-icon.png" alt="settings-icon" class="s_icon">
+                    <button class="settings">
+                        <i class="fa-solid fa-gear"></i>
                     </button>
 
-                    <div class="dropdown">
 
-                        <div class="options option1">
-                            <input type="checkbox" class="option" id="option1" onclick="ToggleSecondsBar()">
-                            <label for="option1" class="option">Toggle Seconds Bar</label>
-                        </div>
+                </div>
+            </div>
+            <div class="dropdown">
 
-                        <div class="options option2">
-                            <input type="checkbox" class="option" id="option2" onclick="SmoothBar()">
-                            <label for="option2" class="option">Smooth Bar</label>
-                        </div>
+                <div class="options option1">
+                    <input type="checkbox" id="option1">
+                    <label for="option1">Toggle Seconds Bar</label>
+                </div>
 
-                        <div class="options option3">
-                            <label class="checkmark-container" style="background-color: rgb(var(--color1_LIGHT))">
-                                <input type="radio" name="color" value="color1">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkmark-container" style="background-color: rgb(var(--color2_LIGHT))"> 
-                                <input type="radio" name="color" value="color2">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkmark-container" style="background-color: rgb(var(--color3_LIGHT))">
-                                <input type="radio" name="color" value="color3">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkmark-container" style="background-color: rgb(var(--color4_LIGHT))">
-                                <input type="radio" name="color" value="color4">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="checkmark-container" style="background-color: rgb(var(--color5_LIGHT))">
-                                <input type="radio" name="color" value="color5">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                    </div>
+                <div class="options option2">
+                    <input type="checkbox" id="option2">
+                    <label for="option2">Smooth Bar</label>
+                </div>
+
+                <div class="options option4">
+                    <label for="option4" class="slider-op1">Scale</label>
+                    <input type="range" id="option4" min="0.1" max="2" step="0.01" value="1">
+                </div>
+
+                <div class="options option5">
+                    <label for="option5" class="slider-op2">Scale Image</label>
+                    <input type="range" id="option5" min="0.1" max="2" step="0.01" value="1">
+                    <button class="button-scale-img">Contain Image</button>
+                </div>
+
+                <div class="options option-last">
+                    <label class="checkmark-container" style="background-color: rgb(var(--color1_LIGHT))">
+                        <input type="radio" name="color" value="color1">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkmark-container" style="background-color: rgb(var(--color2_LIGHT))">
+                        <input type="radio" name="color" value="color2">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkmark-container" style="background-color: rgb(var(--color3_LIGHT))">
+                        <input type="radio" name="color" value="color3">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkmark-container" style="background-color: rgb(var(--color4_LIGHT))">
+                        <input type="radio" name="color" value="color4">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkmark-container" style="background-color: rgb(var(--color5_LIGHT))">
+                        <input type="radio" name="color" value="color5">
+                        <span class="checkmark"></span>
+                    </label>
                 </div>
             </div>
         </div>

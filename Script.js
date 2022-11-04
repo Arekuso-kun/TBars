@@ -33,36 +33,64 @@ function saveToLocalStorage(valueName, value) {
 saveToLocalStorage('wow', 'test');
 console.log(loadFromLocalStorage('wow'));
 
+const root = document.querySelector(":root");
+const color_radios = document.querySelectorAll("input[name='color']");
 
-document.querySelectorAll("input[name='color']").forEach(color_box =>{
+color_radios.forEach(color_box =>{
     color_box.onclick = () => {
-        document.querySelector(":root").style.setProperty('--background-color', "var(--" + color_box.value + "_DARK)");
-        document.querySelector(":root").style.setProperty('--mid-color', "var(--" + color_box.value + "_MID)");
-        document.querySelector(":root").style.setProperty('--bar-color', "var(--" + color_box.value + "_LIGHT)");
-        document.querySelector(":root").style.setProperty('--bright-color', "var(--" + color_box.value + "_BRIGHT)");
+        root.style.setProperty('--background-color', "var(--" + color_box.value + "_DARK)");
+        root.style.setProperty('--mid-color', "var(--" + color_box.value + "_MID)");
+        root.style.setProperty('--bar-color', "var(--" + color_box.value + "_LIGHT)");
+        root.style.setProperty('--bright-color', "var(--" + color_box.value + "_BRIGHT)");
         console.log(color_box.value + " loaded !");
     }
 });
 
-function ToggleSecondsBar() {
-    if (document.getElementById("option1").checked)
+const Settings = document.querySelector(".settings");
+const ToggleSecondsBar = document.getElementById("option1");
+const SmoothBar = document.getElementById("option2");
+const Scale = document.getElementById("option4");
+const ScaleImg = document.getElementById("option5");
+
+const ScaleLabel = document.querySelector(".slider-op1");
+ScaleLabel.innerHTML = "Scale    " + (Scale.value*100).toFixed(0) + "%" ;
+
+const ScaleImgLabel = document.querySelector(".slider-op2");
+ScaleImgLabel.innerHTML = "Scale Image    " + (ScaleImg.value*100).toFixed(0) + "%" ;
+
+Settings.onclick = () => {
+    document.querySelector(".dropdown").classList.toggle('active');
+    console.log("Button clicked !");
+}
+
+ToggleSecondsBar.onclick = () => {
+    if (ToggleSecondsBar.checked)
         document.getElementById("second").style.display = "block";
     else
         document.getElementById("second").style.display = "none";
 }
 
-function SmoothBar() {
-    if (document.getElementById("option2").checked)
-        return true;
-    else
-        return false;
+// SmoothBar.onclick = () => {
+//     // console.log(SmoothBar.onclick);
+    
+//     if (SmoothBar.checked) 
+//         return true;
+//     return false;
+// }
+
+Scale.oninput = () => {
+    document.querySelector(".container-left").style.scale = Scale.value;
+    document.querySelector(".container-right").style.scale = Scale.value;
+    ScaleLabel.innerHTML = "Scale    " + (Scale.value*100).toFixed(0) + "%" ;
+    console.log(Scale.value);
 }
 
-// document.getElementsByClassName("dropdown")[0].style.opacity = 0;
-function OpenCloseSettings() {
-    document.querySelector(".dropdown").classList.toggle('active');
-    console.log("Button clicked !");
+ScaleImg.oninput = () => {
+    document.querySelector(".background").style.backgroundSize = (ScaleImg.value*100).toFixed(0) + "%" ;
+    ScaleImgLabel.innerHTML = "Scale Image    " + (ScaleImg.value*100).toFixed(0) + "%" ;
 }
+
+console.log(document.querySelector("body").style.scale.getv);
 
 var wL = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -113,7 +141,7 @@ setInterval(function () {
     let days_month = d_now.getDate() - 1 + hours / 24;
     let days_year = -1 + hours / 24;
 
-    if (SmoothBar())
+    if (SmoothBar.checked)
         seconds += miliseconds / 1000;
 
     document.getElementById("second-text").innerHTML = "Second: " + Number(miliseconds / 10).toFixed(2) + "%";
@@ -144,7 +172,7 @@ setInterval(function () {
     document.getElementById("year-text").innerHTML = "Year: " + Number(days_year * (100 / (year_lenght))).toFixed(2) + "%";
     document.getElementById("year-bar").style.width = days_year * (100 / (year_lenght)) + "%";
 
-    document.getElementsByClassName("week_day")[0].innerHTML = wL[d_now.getDay()];
+    document.querySelector(".week_day").innerHTML = wL[d_now.getDay()];
 
     let hh = d_now.getHours();
     let mm = d_now.getMinutes();
@@ -152,8 +180,8 @@ setInterval(function () {
         hh = "0" + hh;
     if (mm < 10)
         mm = "0" + mm;
-    document.getElementsByClassName("clock")[0].innerHTML = hh + ":" + mm;
-    document.getElementsByClassName("date")[0].innerHTML = d_now.getDate() + " " + mS[d_now.getMonth()] + " " + d_now.getFullYear();
+    document.querySelector(".clock").innerHTML = hh + ":" + mm;
+    document.querySelector(".date").innerHTML = d_now.getDate() + " " + mS[d_now.getMonth()] + " " + d_now.getFullYear();
 
     let one_year = d_christmas.getTime() - d_last_christmas.getTime();
     let time_from_last_chrismas = d_now.getTime() - d_last_christmas.getTime();
@@ -165,5 +193,5 @@ setInterval(function () {
     document.getElementById("christmas-bar").style.width = time_from_last_chrismas * (100 / one_year) + "%";
     document.getElementById("christmas-text2").innerHTML = Number(days_until_christmas).toFixed(0) + " days until Christmas !";
 
-    // setTimeout(f, SmoothBar());
+    // setTimeout(f, SmoothBarCheck());
 }, 1);
