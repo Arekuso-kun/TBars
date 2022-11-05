@@ -1,31 +1,29 @@
 :root {
     --background-color: 21, 21, 46;
-    --bar-color: 42, 42, 91;
-    --mid-color: 42, 42, 91;
+    --accent-color: 42, 42, 91;
     --bright-color: 236, 237, 242;
 
+    --color0_DARK: 21, 21, 46;
+    --color0_LIGHT: 42, 42, 91;
+    --color0_BRIGHT: 236, 237, 242;
+    
     --color1_DARK: 40, 6, 16;
-    --color1_MID: 89, 13, 36;
     --color1_LIGHT: 89, 13, 36;
     --color1_BRIGHT: 236, 237, 242;
 
     --color2_DARK: 5, 28, 46;
-    --color2_MID: 11, 59, 96;
     --color2_LIGHT: 11, 59, 96;
     --color2_BRIGHT: 236, 237, 242;
     
     --color3_DARK: 7, 31, 18;
-    --color3_MID: 17, 75, 44;
     --color3_LIGHT: 17, 75, 44;
     --color3_BRIGHT: 236, 237, 242;
 
     --color4_DARK: 68, 27, 0;
-    --color4_MID: 143, 57, 0;
     --color4_LIGHT: 143, 57, 0;
     --color4_BRIGHT: 236, 237, 242;
 
     --color5_DARK: 8, 9, 12;
-    --color5_MID: 27, 29, 39;
     --color5_LIGHT: 27, 29, 39;
     --color5_BRIGHT: 236, 237, 242;
 }
@@ -95,13 +93,13 @@ body {
     margin-top: 0px; */
     border-radius: 10px;
     background-size: contain;
-    background-color: rgba(var(--mid-color), 0);
+    background-color: rgba(var(--accent-color), 0);
     float: right;
     transition: 0.3s;
 }
 
 .settings:hover {
-    background-color: rgba(var(--mid-color), 0.8);
+    background-color: rgba(var(--accent-color), 0.8);
 }
 
 .fa-gear {
@@ -121,7 +119,7 @@ body {
     float: right;
     border-radius: 10px 0 0 10px;
     right: -10px;
-    top: 200px;
+    top: 30%;
     padding: 10px 20px 10px 20px;
     overflow: hidden;
     transition: 0.3s;
@@ -147,16 +145,17 @@ label {
 
 input {
     /* margin: 10px; */
-    accent-color: rgb(var(--bar-color));
+    accent-color: rgb(var(--accent-color));
 }
 
-.option4, .option5 {
+.option4, .option5, .option6 {
     flex-direction: column;
-    height: 80px;
+    height: auto;
+    padding-bottom: 10px;
 }
 
-.option5 {
-    height: 120px;
+.option6 div {
+    margin: 5px 0 5px 0;
 }
 
 .button-scale-img {
@@ -167,7 +166,7 @@ input {
     padding-top: 10px;
     margin-top: 10px;
     border-radius: 10px;
-    background-color: rgba(var(--mid-color), 1);
+    background-color: rgb(var(--accent-color));
     color: rgb(var(--bright-color));
     transition: 0.3s;
 }
@@ -179,10 +178,10 @@ input {
 .button-scale-img:active {
     scale: 0.975;
     transition: 10ms;
-    background-color: rgba(var(--mid-color), 0.9);
+    background-color: rgba(var(--accent-color), 0.9);
 }
 
-.slider-op1, .slider-op2 {
+.slider-op1, .slider-op2, .custom-color {
     white-space: pre;
 }
 
@@ -201,6 +200,11 @@ input {
     height: 25px;
     border-radius: 30%;
     /* margin: 5px; */
+    transition: 0.3s;
+}
+
+.checkmark-container:hover {
+    scale: 1.1;
 }
 
 .container-bars {
@@ -231,7 +235,7 @@ input {
 }
 
 .bar-background {
-    background: rgb(var(--bar-color));
+    background: rgb(var(--accent-color));
     height: 5px;
     width: 100%;
     margin-bottom: 20px;
@@ -261,7 +265,7 @@ input {
 
 .week_day, .date {
     position: relative;
-    color: rgb(var(--mid-color));
+    color: rgb(var(--accent-color));
     font-family: FontBig;
     bottom: 10px;
     font-size: 30px;

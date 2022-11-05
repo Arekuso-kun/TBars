@@ -1,96 +1,236 @@
-function loadFromLocalStorage(valueName) {
-    try {
-        const serializedValue = localStorage.getItem(`${valueName}`);
-        if (serializedValue === null || serializedValue === undefined || serializedValue === 'undefined') {
-            return undefined;
-        }
+// function loadFromLocalStorage(valueName) {
+//     try {
+//         const serializedValue = localStorage.getItem(`${valueName}`);
+//         if (serializedValue === null || serializedValue === undefined || serializedValue === 'undefined') {
+//             return undefined;
+//         }
 
-        return JSON.parse(serializedValue);
-    } catch (err) {
-        console.error(err);
-        return undefined;
-    }
+//         return JSON.parse(serializedValue);
+//     } catch (err) {
+//         console.error(err);
+//         return undefined;
+//     }
+// }
+
+// function removeFromLocalStorage(valueName) {
+//     try {
+//         localStorage.removeItem(`${valueName}`);
+//     } catch (err) {
+//         console.error(err);
+//     }
+// }
+
+// function saveToLocalStorage(valueName, value) {
+//     try {
+//         const serializedState = JSON.stringify(value);
+//         localStorage.setItem(`${valueName}`, serializedState);
+//     } catch (err) {
+//         console.error(err);
+//     }
+// }
+
+let settingsLoaded = false;
+
+function RGBToHex(rgb) {
+    // Turn "r, g, b" into [r,g,b]
+    rgb = rgb.split(", ");
+
+    let r = (+rgb[0]).toString(16),
+        g = (+rgb[1]).toString(16),
+        b = (+rgb[2]).toString(16);
+
+    if (r.length == 1)
+        r = "0" + r;
+    if (g.length == 1)
+        g = "0" + g;
+    if (b.length == 1)
+        b = "0" + b;
+
+    return "#" + r + g + b;
 }
 
-function removeFromLocalStorage(valueName) {
-    try {
-        localStorage.removeItem(`${valueName}`);
-    } catch (err) {
-        console.error(err);
-    }
-}
+function hexToRGB(h) {
+    let r = 0, g = 0, b = 0;
 
-function saveToLocalStorage(valueName, value) {
-    try {
-        const serializedState = JSON.stringify(value);
-        localStorage.setItem(`${valueName}`, serializedState);
-    } catch (err) {
-        console.error(err);
+    // 3 digits
+    if (h.length == 4) {
+        r = "0x" + h[1] + h[1];
+        g = "0x" + h[2] + h[2];
+        b = "0x" + h[3] + h[3];
+
+        // 6 digits
+    } else if (h.length == 7) {
+        r = "0x" + h[1] + h[2];
+        g = "0x" + h[3] + h[4];
+        b = "0x" + h[5] + h[6];
     }
+
+    return +r + ", " + +g + ", " + +b;
 }
 
 // test
-saveToLocalStorage('wow', 'test');
-console.log(loadFromLocalStorage('wow'));
-
-const root = document.querySelector(":root");
-const color_radios = document.querySelectorAll("input[name='color']");
-
-color_radios.forEach(color_box =>{
-    color_box.onclick = () => {
-        root.style.setProperty('--background-color', "var(--" + color_box.value + "_DARK)");
-        root.style.setProperty('--mid-color', "var(--" + color_box.value + "_MID)");
-        root.style.setProperty('--bar-color', "var(--" + color_box.value + "_LIGHT)");
-        root.style.setProperty('--bright-color', "var(--" + color_box.value + "_BRIGHT)");
-        console.log(color_box.value + " loaded !");
-    }
-});
+// saveToLocalStorage('wow', 'test');
+// console.log(loadFromLocalStorage('wow'));
 
 const Settings = document.querySelector(".settings");
 const ToggleSecondsBar = document.getElementById("option1");
 const SmoothBar = document.getElementById("option2");
 const Scale = document.getElementById("option4");
 const ScaleImg = document.getElementById("option5");
+const ContainImg = document.querySelector(".button-scale-img");
 
 const ScaleLabel = document.querySelector(".slider-op1");
-ScaleLabel.innerHTML = "Scale    " + (Scale.value*100).toFixed(0) + "%" ;
+// ScaleLabel.innerHTML = "Scale    " + (Scale.value * 100).toFixed(0) + "%";
 
 const ScaleImgLabel = document.querySelector(".slider-op2");
-ScaleImgLabel.innerHTML = "Scale Image    " + (ScaleImg.value*100).toFixed(0) + "%" ;
+// ScaleImgLabel.innerHTML = "Scale Image    " + (ScaleImg.value * 100).toFixed(0) + "%";
+
+const BackgroundColor = document.getElementById("background-color");
+const AccentColor = document.getElementById("accent-color");
+const ElementsColor = document.getElementById("elements-color");
+
+const color_pickers = document.querySelectorAll("input[name='color-picker']");
+
+const root = document.querySelector(":root");
+const color_radios = document.querySelectorAll("input[name='color']");
+
+function LoadSettings() {
+    const _ToggleSecondsBar = localStorage.getItem("ToggleSecondsBar");
+    // console.log(TSB);
+    if (_ToggleSecondsBar == "none") {
+        document.getElementById("second").style.display = "none";
+        ToggleSecondsBar.checked = false;
+    }
+    else {
+        document.getElementById("second").style.display = "block";
+        ToggleSecondsBar.checked = true;
+    }
+
+    const _SmoothBar = localStorage.getItem("SmoothBar");
+    // console.log(SB);
+    if (_SmoothBar == "false")
+        SmoothBar.checked = false;
+    else
+        SmoothBar.checked = true;
+
+    const _Scale = localStorage.getItem("Scale");
+    if (_Scale != null)
+        Scale.value = _Scale;
+    else
+        Scale.value = 1;
+    console.log(_Scale);
+
+    const _ScaleImg = localStorage.getItem("ScaleImg");
+    const _ContainImg = localStorage.getItem("ContainImg");
+    if (_ContainImg == "no-contain")
+        ScaleImg.value = _ScaleImg;
+    else
+        ScaleImg.value = 1;
+    document.querySelector(".background").style.backgroundSize = "contain";
+    // console.log(localStorage.getItem("ScaleImg") == null);
+}
+
+LoadSettings();
+
+color_radios.forEach(color_box => {
+    color_box.onclick = () => {
+        root.style.setProperty('--background-color', "var(--" + color_box.value + "_DARK)");
+        root.style.setProperty('--accent-color', "var(--" + color_box.value + "_LIGHT)");
+        root.style.setProperty('--bright-color', "var(--" + color_box.value + "_BRIGHT)");
+
+        let background_color = getComputedStyle(document.body).getPropertyValue('--background-color');
+        let accent_color = getComputedStyle(document.body).getPropertyValue('--accent-color');
+        let elements_color = getComputedStyle(document.body).getPropertyValue('--bright-color');
+
+        BackgroundColor.value = RGBToHex(background_color);
+        AccentColor.value = RGBToHex(accent_color);
+        ElementsColor.value = RGBToHex(elements_color);
+        // console.log(RGBToHex(background_color));
+        // console.log(color_box.value + " loaded !");
+        // console.log(BackgroundColor.value);
+    }
+});
+
+// color_radios.forEach(color_box => {color_box.onclick();})
+
+BackgroundColor.onchange = () => {
+    console.log(hexToRGB(BackgroundColor.value));
+    root.style.setProperty('--background-color', hexToRGB(BackgroundColor.value));
+}
+
+AccentColor.onchange = () => {
+    console.log(hexToRGB(AccentColor.value));
+    root.style.setProperty('--accent-color', hexToRGB(AccentColor.value));
+}
+
+ElementsColor.onchange = () => {
+    console.log(hexToRGB(ElementsColor.value));
+    root.style.setProperty('--bright-color', hexToRGB(ElementsColor.value));
+}
 
 Settings.onclick = () => {
     document.querySelector(".dropdown").classList.toggle('active');
     console.log("Button clicked !");
 }
 
+// function test() {
+//     console.log(localStorage.getItem(`${SmoothBar}`));
+//     console.log(localStorage.getItem(`${ToggleSecondsBar}`));
+// }
+
 ToggleSecondsBar.onclick = () => {
-    if (ToggleSecondsBar.checked)
+    if (ToggleSecondsBar.checked) {
         document.getElementById("second").style.display = "block";
-    else
+        localStorage.setItem("ToggleSecondsBar", "block");
+        console.log("ToggleSecondsBar block");
+    }
+    else {
         document.getElementById("second").style.display = "none";
+        localStorage.setItem("ToggleSecondsBar", "none");
+        console.log("ToggleSecondsBar none");
+    }
 }
 
-// SmoothBar.onclick = () => {
-//     // console.log(SmoothBar.onclick);
-    
-//     if (SmoothBar.checked) 
-//         return true;
-//     return false;
-// }
+SmoothBar.onclick = () => {
+    if (SmoothBar.checked) {
+        localStorage.setItem("SmoothBar", "true");
+        console.log("SmoothBAr true");
+    }
+    else {
+        localStorage.setItem("SmoothBar", "false");
+        console.log("SmoothBAr false");
+    }
+}
 
 Scale.oninput = () => {
     document.querySelector(".container-left").style.scale = Scale.value;
     document.querySelector(".container-right").style.scale = Scale.value;
-    ScaleLabel.innerHTML = "Scale    " + (Scale.value*100).toFixed(0) + "%" ;
-    console.log(Scale.value);
+    ScaleLabel.innerHTML = "Scale    " + (Scale.value * 100).toFixed(0) + "%";
+    // console.log(Scale.value);
+    localStorage.setItem("Scale", Scale.value);
 }
+
+Scale.oninput();
 
 ScaleImg.oninput = () => {
-    document.querySelector(".background").style.backgroundSize = (ScaleImg.value*100).toFixed(0) + "%" ;
-    ScaleImgLabel.innerHTML = "Scale Image    " + (ScaleImg.value*100).toFixed(0) + "%" ;
+    ScaleImgLabel.innerHTML = "Scale Image    " + (ScaleImg.value * 100).toFixed(0) + "%";
+    if (document.querySelector(".background").style.backgroundSize != "contain")
+        document.querySelector(".background").style.backgroundSize = (ScaleImg.value * 100).toFixed(0) + "%";
+    if (settingsLoaded == true) {
+        document.querySelector(".background").style.backgroundSize = (ScaleImg.value * 100).toFixed(0) + "%";
+        localStorage.setItem("ScaleImg", ScaleImg.value);
+        localStorage.setItem("ContainImg", "no-contain");
+    }
 }
 
-console.log(document.querySelector("body").style.scale.getv);
+ScaleImg.oninput();
+
+ContainImg.onclick = () => {
+    document.querySelector(".background").style.backgroundSize = "contain";
+    localStorage.setItem("ContainImg", "contain");
+}
+
+settingsLoaded = true;
 
 var wL = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
