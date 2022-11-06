@@ -1,36 +1,3 @@
-// function loadFromLocalStorage(valueName) {
-//     try {
-//         const serializedValue = localStorage.getItem(`${valueName}`);
-//         if (serializedValue === null || serializedValue === undefined || serializedValue === 'undefined') {
-//             return undefined;
-//         }
-
-//         return JSON.parse(serializedValue);
-//     } catch (err) {
-//         console.error(err);
-//         return undefined;
-//     }
-// }
-
-// function removeFromLocalStorage(valueName) {
-//     try {
-//         localStorage.removeItem(`${valueName}`);
-//     } catch (err) {
-//         console.error(err);
-//     }
-// }
-
-// function saveToLocalStorage(valueName, value) {
-//     try {
-//         const serializedState = JSON.stringify(value);
-//         localStorage.setItem(`${valueName}`, serializedState);
-//     } catch (err) {
-//         console.error(err);
-//     }
-// }
-
-let settingsLoaded = false;
-
 function RGBToHex(rgb) {
     // Turn "r, g, b" into [r,g,b]
     rgb = rgb.split(", ");
@@ -68,72 +35,111 @@ function hexToRGB(h) {
     return +r + ", " + +g + ", " + +b;
 }
 
-// test
-// saveToLocalStorage('wow', 'test');
-// console.log(loadFromLocalStorage('wow'));
+let settingsLoaded = false;
 
 const Settings = document.querySelector(".settings");
-const ToggleSecondsBar = document.getElementById("option1");
-const SmoothBar = document.getElementById("option2");
-const Scale = document.getElementById("option4");
-const ScaleImg = document.getElementById("option5");
+const ToggleSecondsBar = document.getElementById("toggle-seconds-bar");
+const ToggleSmoothBar = document.getElementById("toggle-smooth-bar");
+
+const ToggleSettingsIcon = document.getElementById("toggle-settings-icon");
+const ToggleBars = document.getElementById("toggle-bars");
+const ToggleClockDate = document.getElementById("toggle-clock-date");
+const ToggleChristmas = document.getElementById("toggle-christmas");
+
+const Scale = document.getElementById("scale_slider");
+const ScaleImg = document.getElementById("scale_image_slider");
 const ContainImg = document.querySelector(".button-scale-img");
 
 const ScaleLabel = document.querySelector(".slider-op1");
-// ScaleLabel.innerHTML = "Scale    " + (Scale.value * 100).toFixed(0) + "%";
-
 const ScaleImgLabel = document.querySelector(".slider-op2");
-// ScaleImgLabel.innerHTML = "Scale Image    " + (ScaleImg.value * 100).toFixed(0) + "%";
 
 const BackgroundColor = document.getElementById("background-color");
 const AccentColor = document.getElementById("accent-color");
 const ElementsColor = document.getElementById("elements-color");
 
-const color_pickers = document.querySelectorAll("input[name='color-picker']");
+const CustomColorButton = document.querySelector("input[value='color_custom']")
+
+// const color_pickers = document.querySelectorAll("input[name='color-picker']");
 
 const root = document.querySelector(":root");
 const color_radios = document.querySelectorAll("input[name='color']");
 
-function LoadSettings() {
+function LoadSettings() { // Every else represents the default value
     const _ToggleSecondsBar = localStorage.getItem("ToggleSecondsBar");
-    // console.log(TSB);
-    if (_ToggleSecondsBar == "none") {
-        document.getElementById("second").style.display = "none";
+    if (_ToggleSecondsBar == "false")
         ToggleSecondsBar.checked = false;
-    }
-    else {
-        document.getElementById("second").style.display = "block";
-        ToggleSecondsBar.checked = true;
-    }
-
-    const _SmoothBar = localStorage.getItem("SmoothBar");
-    // console.log(SB);
-    if (_SmoothBar == "false")
-        SmoothBar.checked = false;
     else
-        SmoothBar.checked = true;
+        ToggleSecondsBar.checked = true;
+
+    const _ToggleSmoothBar = localStorage.getItem("ToggleSmoothBar");
+    if (_ToggleSmoothBar == "false")
+        ToggleSmoothBar.checked = false;
+    else
+        ToggleSmoothBar.checked = true;
+
+    const _ToggleSettingsIcon = localStorage.getItem("ToggleSettingsIcon");
+    if (_ToggleSettingsIcon == "false")
+        ToggleSettingsIcon.checked = false;
+    else
+        ToggleSettingsIcon.checked = true;
+
+    const _ToggleBars = localStorage.getItem("ToggleBars");
+    if (_ToggleBars == "false")
+        ToggleBars.checked = false;
+    else
+        ToggleBars.checked = true;
+
+    const _ToggleClockDate = localStorage.getItem("ToggleClockDate");
+    if (_ToggleClockDate == "false")
+        ToggleClockDate.checked = false;
+    else
+        ToggleClockDate.checked = true;
+
+    const _ToggleChristmas = localStorage.getItem("ToggleChristmas");
+    if (_ToggleChristmas == "false")
+        ToggleChristmas.checked = false;
+    else
+        ToggleChristmas.checked = true;
 
     const _Scale = localStorage.getItem("Scale");
     if (_Scale != null)
         Scale.value = _Scale;
     else
         Scale.value = 1;
-    console.log(_Scale);
 
     const _ScaleImg = localStorage.getItem("ScaleImg");
     const _ContainImg = localStorage.getItem("ContainImg");
     if (_ContainImg == "no-contain")
         ScaleImg.value = _ScaleImg;
-    else
+    else {
         ScaleImg.value = 1;
-    document.querySelector(".background").style.backgroundSize = "contain";
-    // console.log(localStorage.getItem("ScaleImg") == null);
+        ContainImg.onclick();
+    }
+    const _BackgroundColor = localStorage.getItem("BackgroundColor")
+    const _AccentColor = localStorage.getItem("AccentColor")
+    const _ElementsColor = localStorage.getItem("ElementsColor")
+    const _Theme = localStorage.getItem("Theme")
+    if (_BackgroundColor != null)
+        root.style.setProperty('--color_custom_DARK', _BackgroundColor);
+    if (_AccentColor != null)
+        root.style.setProperty('--color_custom_LIGHT', _AccentColor);
+    if (_ElementsColor != null)
+        root.style.setProperty('--color_custom_BRIGHT', _ElementsColor);
+    if (_Theme != null)
+        color_radios.forEach(color_box => {
+            if (_Theme == color_box.value) {
+                color_box.checked = true;
+            }
+        });
+    // else
+    // default
 }
-
-LoadSettings();
 
 color_radios.forEach(color_box => {
     color_box.onclick = () => {
+        if (settingsLoaded == true) {
+
+        }
         root.style.setProperty('--background-color', "var(--" + color_box.value + "_DARK)");
         root.style.setProperty('--accent-color', "var(--" + color_box.value + "_LIGHT)");
         root.style.setProperty('--bright-color', "var(--" + color_box.value + "_BRIGHT)");
@@ -145,27 +151,33 @@ color_radios.forEach(color_box => {
         BackgroundColor.value = RGBToHex(background_color);
         AccentColor.value = RGBToHex(accent_color);
         ElementsColor.value = RGBToHex(elements_color);
+
+        localStorage.setItem("Theme", color_box.value);
         // console.log(RGBToHex(background_color));
         // console.log(color_box.value + " loaded !");
         // console.log(BackgroundColor.value);
     }
 });
 
-// color_radios.forEach(color_box => {color_box.onclick();})
-
-BackgroundColor.onchange = () => {
-    console.log(hexToRGB(BackgroundColor.value));
+BackgroundColor.oninput = () => {
+    CustomColorButton.checked = true;
+    root.style.setProperty('--color_custom_DARK', hexToRGB(BackgroundColor.value));
     root.style.setProperty('--background-color', hexToRGB(BackgroundColor.value));
+    localStorage.setItem("BackgroundColor", hexToRGB(BackgroundColor.value));
 }
 
-AccentColor.onchange = () => {
-    console.log(hexToRGB(AccentColor.value));
+AccentColor.oninput = () => {
+    CustomColorButton.checked = true;
+    root.style.setProperty('--color_custom_LIGHT', hexToRGB(AccentColor.value));
     root.style.setProperty('--accent-color', hexToRGB(AccentColor.value));
+    localStorage.setItem("AccentColor", hexToRGB(AccentColor.value));
 }
 
-ElementsColor.onchange = () => {
-    console.log(hexToRGB(ElementsColor.value));
+ElementsColor.oninput = () => {
+    CustomColorButton.checked = true;
+    root.style.setProperty('--color_custom_BRIGHT', hexToRGB(ElementsColor.value));
     root.style.setProperty('--bright-color', hexToRGB(ElementsColor.value));
+    localStorage.setItem("ElementsColor", hexToRGB(ElementsColor.value));
 }
 
 Settings.onclick = () => {
@@ -173,32 +185,67 @@ Settings.onclick = () => {
     console.log("Button clicked !");
 }
 
-// function test() {
-//     console.log(localStorage.getItem(`${SmoothBar}`));
-//     console.log(localStorage.getItem(`${ToggleSecondsBar}`));
-// }
-
 ToggleSecondsBar.onclick = () => {
     if (ToggleSecondsBar.checked) {
         document.getElementById("second").style.display = "block";
-        localStorage.setItem("ToggleSecondsBar", "block");
-        console.log("ToggleSecondsBar block");
+        localStorage.setItem("ToggleSecondsBar", "true");
     }
     else {
         document.getElementById("second").style.display = "none";
-        localStorage.setItem("ToggleSecondsBar", "none");
-        console.log("ToggleSecondsBar none");
+        localStorage.setItem("ToggleSecondsBar", "false");
     }
 }
 
-SmoothBar.onclick = () => {
-    if (SmoothBar.checked) {
-        localStorage.setItem("SmoothBar", "true");
-        console.log("SmoothBAr true");
+ToggleSmoothBar.onclick = () => {
+    if (ToggleSmoothBar.checked) {
+        localStorage.setItem("ToggleSmoothBar", "true");
     }
     else {
-        localStorage.setItem("SmoothBar", "false");
-        console.log("SmoothBAr false");
+        localStorage.setItem("ToggleSmoothBar", "false");
+    }
+}
+
+ToggleSettingsIcon.onclick = () => {
+    if (ToggleSettingsIcon.checked) {
+        document.querySelector(".fa-gear").style.opacity = 1;
+        localStorage.setItem("ToggleSettingsIcon", "true");
+    }
+    else {
+        document.querySelector(".fa-gear").style.opacity = 0;
+        localStorage.setItem("ToggleSettingsIcon", "false");
+    }
+}
+
+ToggleBars.onclick = () => {
+    if (ToggleBars.checked) {
+        document.querySelector(".container-bars").style.display = "block";
+        localStorage.setItem("ToggleBars", "true");
+    }
+    else {
+        document.querySelector(".container-bars").style.display = "none";
+        localStorage.setItem("ToggleBars", "false");
+    }
+}
+
+ToggleClockDate.onclick = () => {
+    if (ToggleClockDate.checked) {
+        document.querySelector(".container-clock-date").style.display = "inline-block";
+        localStorage.setItem("ToggleClockDate", "true");
+    }
+    else {
+        document.querySelector(".container-clock-date").style.display = "none";
+        localStorage.setItem("ToggleClockDate", "false");
+    }
+}
+
+ToggleChristmas.onclick = () => {
+    if (ToggleChristmas.checked) {
+        document.querySelector(".container-christmas").style.display = "block";
+        localStorage.setItem("ToggleChristmas", "true");
+    }
+    else {
+        document.querySelector(".container-christmas").style.display = "none";
+        localStorage.setItem("ToggleChristmas", "false");
     }
 }
 
@@ -209,8 +256,6 @@ Scale.oninput = () => {
     // console.log(Scale.value);
     localStorage.setItem("Scale", Scale.value);
 }
-
-Scale.oninput();
 
 ScaleImg.oninput = () => {
     ScaleImgLabel.innerHTML = "Scale Image    " + (ScaleImg.value * 100).toFixed(0) + "%";
@@ -223,13 +268,24 @@ ScaleImg.oninput = () => {
     }
 }
 
-ScaleImg.oninput();
-
 ContainImg.onclick = () => {
     document.querySelector(".background").style.backgroundSize = "contain";
     localStorage.setItem("ContainImg", "contain");
 }
 
+LoadSettings();
+color_radios.forEach(color_box => {
+    if (color_box.checked)
+        color_box.onclick();
+});
+ToggleSecondsBar.onclick();
+ToggleSmoothBar.onclick();
+ToggleSettingsIcon.onclick();
+ToggleBars.onclick();
+ToggleClockDate.onclick();
+ToggleChristmas.onclick();
+Scale.oninput();
+ScaleImg.oninput();
 settingsLoaded = true;
 
 var wL = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -281,7 +337,7 @@ setInterval(function () {
     let days_month = d_now.getDate() - 1 + hours / 24;
     let days_year = -1 + hours / 24;
 
-    if (SmoothBar.checked)
+    if (ToggleSmoothBar.checked)
         seconds += miliseconds / 1000;
 
     document.getElementById("second-text").innerHTML = "Second: " + Number(miliseconds / 10).toFixed(2) + "%";
