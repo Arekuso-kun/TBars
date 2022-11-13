@@ -6,21 +6,21 @@
 		{
 			"accent" : 
 			{
-				"condition" : "color.value == \"default\"",
+				"condition" : "color.value == \"custom\"",
 				"index" : 11,
 				"order" : 111,
 				"text" : "Accent",
 				"type" : "color",
-				"value" : "0 1 0"
+				"value" : "0.16470588235294117 0.16470588235294117 0.3568627450980392"
 			},
 			"background" : 
 			{
-				"condition" : "color.value == \"default\"",
+				"condition" : "color.value == \"custom\"",
 				"index" : 10,
 				"order" : 110,
 				"text" : "Background",
 				"type" : "color",
-				"value" : "1 0 0"
+				"value" : "0.08235294117647059 0.08235294117647059 0.1803921568627451"
 			},
 			"bars" : 
 			{
@@ -57,7 +57,23 @@
 					},
 					{
 						"label" : "Red",
-						"value" : "red"
+						"value" : "color1"
+					},
+					{
+						"label" : "Blue",
+						"value" : "color2"
+					},
+					{
+						"label" : "Green",
+						"value" : "color3"
+					},
+					{
+						"label" : "Purple",
+						"value" : "color4"
+					},
+					{
+						"label" : "Black",
+						"value" : "color5"
 					},
 					{
 						"label" : "Custom",
@@ -71,12 +87,43 @@
 			},
 			"elements" : 
 			{
-				"condition" : "color.value == \"default\"",
+				"condition" : "color.value == \"custom\"",
 				"index" : 12,
 				"order" : 112,
 				"text" : "Elements",
 				"type" : "color",
-				"value" : "0 0 1"
+				"value" : "0.9254901960784314 0.9294117647058824 0.9490196078431372"
+			},
+			"extrapaddingfortaskbar" : 
+			{
+				"index" : 13,
+				"options" : 
+				[
+					{
+						"label" : "Top",
+						"value" : "top"
+					},
+					{
+						"label" : "Right",
+						"value" : "right"
+					},
+					{
+						"label" : "Bottom",
+						"value" : "bottom"
+					},
+					{
+						"label" : "Left",
+						"value" : "left"
+					},
+					{
+						"label" : "None",
+						"value" : "none"
+					}
+				],
+				"order" : 113,
+				"text" : "Extra Padding (for TaskBar)",
+				"type" : "combo",
+				"value" : "none"
 			},
 			"imageposition" : 
 			{
@@ -151,6 +198,18 @@
 				"text" : "Image Size",
 				"type" : "combo",
 				"value" : "contain"
+			},
+			"paddingvalue" : 
+			{
+				"condition" : "extrapaddingfortaskbar.value != \"none\"",
+				"fraction" : false,
+				"index" : 14,
+				"max" : 200,
+				"min" : 0,
+				"order" : 114,
+				"text" : "Padding Value",
+				"type" : "slider",
+				"value" : 63
 			},
 			"scale" : 
 			{

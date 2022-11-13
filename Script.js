@@ -1,10 +1,8 @@
-// old code here
-
+const background = document.querySelector(".background");
+const root = document.querySelector(":root");
 var ToggleSmoothBar = true;
-
-// let no = 1;
-// document.querySelector(".container-right").style.transform = `scale(${no})`;
-document.querySelector(".background").style.backgroundSize = '5% 5%';
+var PaddingValue = 63;
+var PaddingPosition = "none";
 
 window.wallpaperPropertyListener = {
     applyUserProperties: function (properties) {
@@ -32,7 +30,7 @@ window.wallpaperPropertyListener = {
 
         if (properties.clockdate) {
             if (properties.clockdate.value) {
-                document.querySelector(".container-clock-date").style.display = "block";
+                document.querySelector(".container-clock-date").style.display = "inline-block";
             }
             else {
                 document.querySelector(".container-clock-date").style.display = "none";
@@ -54,20 +52,97 @@ window.wallpaperPropertyListener = {
         }
 
         if (properties.scaleimage) {
-            document.querySelector(".background").style.backgroundSize = `${(properties.scaleimage.value * 100).toFixed(0)}%`;
+            background.style.backgroundSize = `${(properties.scaleimage.value * 100).toFixed(0)}%`;
         }
 
         if (properties.imagesize) {
             if (properties.imagesize.value == "contain") {
-                document.querySelector(".background").style.backgroundSize = "contain";
+                background.style.backgroundSize = "contain";
             }
             if (properties.imagesize.value == "cover") {
-                document.querySelector(".background").style.backgroundSize = "cover";
+                background.style.backgroundSize = "cover";
             }
         }
 
         if (properties.imageposition) {
-            document.querySelector(".background").style.backgroundPosition = properties.imageposition.value;
+            background.style.backgroundPosition = properties.imageposition.value;
+        }
+
+        if (properties.extrapaddingfortaskbar) {
+
+            PaddingPosition = properties.extrapaddingfortaskbar.value;
+
+            if (properties.extrapaddingfortaskbar.value == "none")
+                background.style.padding = "0 0 0 0";
+
+            if (properties.extrapaddingfortaskbar.value == "top")
+                background.style.padding = `${PaddingValue}px 0 0 0`;
+
+            if (properties.extrapaddingfortaskbar.value == "right")
+                background.style.padding = `0 ${PaddingValue}px 0 0`;
+
+            if (properties.extrapaddingfortaskbar.value == "bottom")
+                background.style.padding = `0 0 ${PaddingValue}px 0`;
+
+            if (properties.extrapaddingfortaskbar.value == "left")
+                background.style.padding = `0 0 0 ${PaddingValue}px`;
+        }
+
+        if (properties.paddingvalue) {
+
+            PaddingValue = properties.paddingvalue.value;
+
+            if (PaddingPosition == "none")
+                background.style.padding = "0 0 0 0";
+
+            if (PaddingPosition == "top")
+                background.style.padding = `${PaddingValue}px 0 0 0`;
+
+            if (PaddingPosition == "right")
+                background.style.padding = `0 ${PaddingValue}px 0 0`;
+
+            if (PaddingPosition == "bottom")
+                background.style.padding = `0 0 ${PaddingValue}px 0`;
+
+            if (PaddingPosition == "left")
+                background.style.padding = `0 0 0 ${PaddingValue}px`;
+
+        }
+
+        if (properties.color) {
+                root.style.setProperty('--background-color', "var(--" + properties.color.value + "_DARK)");
+                root.style.setProperty('--accent-color', "var(--" + properties.color.value + "_LIGHT)");
+                root.style.setProperty('--bright-color', "var(--" + properties.color.value + "_BRIGHT)");
+        }
+
+        if (properties.background) {
+            // Convert the custom color to 0 - 255 range for CSS usage
+            var backgroundColor = properties.background.value.split(' ');
+            backgroundColor = backgroundColor.map(function(c) {
+                return Math.ceil(c * 255);
+            });
+            root.style.setProperty('--custom_DARK', backgroundColor);
+            root.style.setProperty('--background-color', backgroundColor);
+        }
+
+        if (properties.accent) {
+            // Convert the custom color to 0 - 255 range for CSS usage
+            var accentColor = properties.accent.value.split(' ');
+            accentColor = accentColor.map(function(c) {
+                return Math.ceil(c * 255);
+            });
+            root.style.setProperty('--custom_LIGHT', accentColor);
+            root.style.setProperty('--accent-color', accentColor);
+        }
+
+        if (properties.elements) {
+            // Convert the custom color to 0 - 255 range for CSS usage
+            var elementsColor = properties.elements.value.split(' ');
+            elementsColor = elementsColor.map(function(c) {
+                return Math.ceil(c * 255);
+            });
+            root.style.setProperty('--custom_BRIGHT', elementsColor);
+            root.style.setProperty('--bright-color', elementsColor);
         }
     },
 };

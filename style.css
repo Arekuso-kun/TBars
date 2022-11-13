@@ -3,12 +3,12 @@
     --accent-color: 42, 42, 91;
     --bright-color: 236, 237, 242;
 
-    --color0_DARK: 21, 21, 46;
-    --color0_LIGHT: 42, 42, 91;
-    --color0_BRIGHT: 236, 237, 242;
+    --default_DARK: 21, 21, 46;
+    --default_LIGHT: 42, 42, 91;
+    --default_BRIGHT: 236, 237, 242;
 
-    --color1_DARK: 40, 6, 16;
-    --color1_LIGHT: 89, 13, 36;
+    --color1_DARK: 49, 8, 20;
+    --color1_LIGHT: 101, 16, 42;
     --color1_BRIGHT: 236, 237, 242;
 
     --color2_DARK: 5, 28, 46;
@@ -27,9 +27,9 @@
     --color5_LIGHT: 27, 29, 39;
     --color5_BRIGHT: 236, 237, 242;
 
-    --color_custom_DARK: 21, 21, 46;
-    --color_custom_LIGHT: 42, 42, 91;
-    --color_custom_BRIGHT: 236, 237, 242;
+    --custom_DARK: 21, 21, 46;
+    --custom_LIGHT: 42, 42, 91;
+    --custom_BRIGHT: 236, 237, 242;
 }
 
 @font-face {
@@ -71,7 +71,7 @@ body {
 }
 
 .container {
-    padding: 5%;
+    padding: 4vh;
     max-width: 100%;
     max-height: 100vh;
 }
