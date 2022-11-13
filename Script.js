@@ -2,6 +2,10 @@
 
 var ToggleSmoothBar = true;
 
+// let no = 1;
+// document.querySelector(".container-right").style.transform = `scale(${no})`;
+document.querySelector(".background").style.backgroundSize = '5% 5%';
+
 window.wallpaperPropertyListener = {
     applyUserProperties: function (properties) {
         if (properties.secondsbar) {
@@ -45,8 +49,21 @@ window.wallpaperPropertyListener = {
         }
 
         if (properties.scale) {
-            document.querySelector(".container-left").style.scale = Scale.value;
-            document.querySelector(".container-right").style.scale = Scale.value;
+            document.querySelector(".container-left").style.transform = `scale(${properties.scale.value})`;
+            document.querySelector(".container-right").style.transform = `scale(${properties.scale.value})`;
+        }
+
+        if (properties.scaleimage) {
+            document.querySelector(".background").style.backgroundSize = `${(properties.scaleimage.value * 100).toFixed(0)}%`;
+        }
+
+        if (properties.imagesize) {
+            if (properties.imagesize.value == "contain") {
+                document.querySelector(".background").style.backgroundSize = "contain";
+            }
+            if (properties.imagesize.value == "cover") {
+                document.querySelector(".background").style.backgroundSize = "cover";
+            }
         }
     },
 };

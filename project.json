@@ -6,16 +6,16 @@
 		{
 			"accent" : 
 			{
-				"index" : 8,
-				"order" : 108,
+				"index" : 9,
+				"order" : 109,
 				"text" : "Accent",
 				"type" : "color",
 				"value" : "0 1 0"
 			},
 			"background" : 
 			{
-				"index" : 7,
-				"order" : 107,
+				"index" : 8,
+				"order" : 108,
 				"text" : "Background",
 				"type" : "color",
 				"value" : "1 0 0"
@@ -46,11 +46,34 @@
 			},
 			"elements" : 
 			{
-				"index" : 9,
-				"order" : 109,
+				"index" : 10,
+				"order" : 110,
 				"text" : "Elements",
 				"type" : "color",
 				"value" : "0 0 1"
+			},
+			"imagesize" : 
+			{
+				"index" : 6,
+				"options" : 
+				[
+					{
+						"label" : "Contain",
+						"value" : "contain"
+					},
+					{
+						"label" : "Cover",
+						"value" : "cover"
+					},
+					{
+						"label" : "Custom",
+						"value" : "custom"
+					}
+				],
+				"order" : 106,
+				"text" : "Image Size",
+				"type" : "combo",
+				"value" : "contain"
 			},
 			"scale" : 
 			{
@@ -67,11 +90,12 @@
 			},
 			"scaleimage" : 
 			{
+				"condition" : "imagesize.value == \"custom\"",
 				"fraction" : true,
-				"index" : 6,
+				"index" : 7,
 				"max" : 2,
 				"min" : 0.1,
-				"order" : 106,
+				"order" : 107,
 				"precision" : 2,
 				"step" : 0.1,
 				"text" : "Scale Image",
