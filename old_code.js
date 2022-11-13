@@ -1,3 +1,7 @@
+/////////////////////////////
+// Old code from Script.js //
+/////////////////////////////
+
 function RGBToHex(rgb) {
     // Turn "r, g, b" into [r,g,b]
     rgb = rgb.split(", ");

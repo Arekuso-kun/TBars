@@ -6,16 +6,18 @@
 		{
 			"accent" : 
 			{
-				"index" : 9,
-				"order" : 109,
+				"condition" : "color.value == \"default\"",
+				"index" : 11,
+				"order" : 111,
 				"text" : "Accent",
 				"type" : "color",
 				"value" : "0 1 0"
 			},
 			"background" : 
 			{
-				"index" : 8,
-				"order" : 108,
+				"condition" : "color.value == \"default\"",
+				"index" : 10,
+				"order" : 110,
 				"text" : "Background",
 				"type" : "color",
 				"value" : "1 0 0"
@@ -44,13 +46,88 @@
 				"type" : "bool",
 				"value" : true
 			},
+			"color" : 
+			{
+				"index" : 9,
+				"options" : 
+				[
+					{
+						"label" : "Default",
+						"value" : "default"
+					},
+					{
+						"label" : "Red",
+						"value" : "red"
+					},
+					{
+						"label" : "Custom",
+						"value" : "custom"
+					}
+				],
+				"order" : 109,
+				"text" : "Color",
+				"type" : "combo",
+				"value" : "default"
+			},
 			"elements" : 
 			{
-				"index" : 10,
-				"order" : 110,
+				"condition" : "color.value == \"default\"",
+				"index" : 12,
+				"order" : 112,
 				"text" : "Elements",
 				"type" : "color",
 				"value" : "0 0 1"
+			},
+			"imageposition" : 
+			{
+				"index" : 8,
+				"options" : 
+				[
+					{
+						"label" : "Top Left",
+						"value" : "top left"
+					},
+					{
+						"label" : "Top Right",
+						"value" : "top right"
+					},
+					{
+						"label" : "Top Center",
+						"value" : "top center"
+					},
+					{
+						"label" : "Bottom Left",
+						"value" : "bottom left"
+					},
+					{
+						"label" : "Bottom Right",
+						"value" : "bottom right"
+					},
+					{
+						"label" : "Bottom Center",
+						"value" : "bottom center"
+					},
+					{
+						"label" : "Center Left",
+						"value" : "center left"
+					},
+					{
+						"label" : "Center Right",
+						"value" : "center right"
+					},
+					{
+						"label" : "Center Center",
+						"value" : "center center"
+					},
+					{
+						"label" : "Custom",
+						"value" : "custom"
+					}
+				],
+				"order" : 108,
+				"text" : "Image Position",
+				"type" : "combo",
+				"value" : "bottom right"
 			},
 			"imagesize" : 
 			{

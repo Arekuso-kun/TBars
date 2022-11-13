@@ -65,6 +65,10 @@ window.wallpaperPropertyListener = {
                 document.querySelector(".background").style.backgroundSize = "cover";
             }
         }
+
+        if (properties.imageposition) {
+            document.querySelector(".background").style.backgroundPosition = properties.imageposition.value;
+        }
     },
 };
 
