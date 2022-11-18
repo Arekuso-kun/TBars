@@ -1,5 +1,6 @@
 {
 	"contentrating" : "Everyone",
+	"description" : "It shows you the progress through time :O",
 	"file" : "index.html",
 	"general" : 
 	{
@@ -361,11 +362,9 @@
 			}
 		}
 	},
-	"preview" : "preview.jpg",
-	"snapshotformat" : -1,
-	"snapshotoverlay" : "",
-	"tags" : [ "Unspecified" ],
-	"title" : "Time Progress Bars Pixel Art 8 bit",
+	"preview" : "preview.gif",
+	"tags" : [ "Abstract" ],
+	"title" : "Time Progress Bars Pixel Art 8 bit Customizable",
 	"type" : "web",
 	"version" : 0
 }
