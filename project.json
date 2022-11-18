@@ -7,8 +7,8 @@
 			"accent" : 
 			{
 				"condition" : "color.value == \"custom\"",
-				"index" : 15,
-				"order" : 115,
+				"index" : 16,
+				"order" : 116,
 				"text" : "Accent",
 				"type" : "color",
 				"value" : "0.16470588235294117 0.16470588235294117 0.3568627450980392"
@@ -16,8 +16,8 @@
 			"background" : 
 			{
 				"condition" : "color.value == \"custom\"",
-				"index" : 14,
-				"order" : 114,
+				"index" : 15,
+				"order" : 115,
 				"text" : "Background",
 				"type" : "color",
 				"value" : "0.08235294117647059 0.08235294117647059 0.1803921568627451"
@@ -40,8 +40,20 @@
 						"value" : "none"
 					},
 					{
+						"label" : "Pixel Art",
+						"value" : "pixelart"
+					},
+					{
 						"label" : "Landscape",
 						"value" : "landscape"
+					},
+					{
+						"label" : "Anime Girl",
+						"value" : "animegirl"
+					},
+					{
+						"label" : "Sakura",
+						"value" : "sakura"
 					},
 					{
 						"label" : "Manga (Power)",
@@ -94,7 +106,7 @@
 			},
 			"color" : 
 			{
-				"index" : 13,
+				"index" : 14,
 				"options" : 
 				[
 					{
@@ -126,7 +138,7 @@
 						"value" : "custom"
 					}
 				],
-				"order" : 113,
+				"order" : 114,
 				"text" : "Color",
 				"type" : "combo",
 				"value" : "default"
@@ -143,15 +155,15 @@
 			"elements" : 
 			{
 				"condition" : "color.value == \"custom\"",
-				"index" : 16,
-				"order" : 116,
+				"index" : 17,
+				"order" : 117,
 				"text" : "Elements",
 				"type" : "color",
 				"value" : "0.9254901960784314 0.9294117647058824 0.9490196078431372"
 			},
 			"extrapaddingfortaskbar" : 
 			{
-				"index" : 17,
+				"index" : 18,
 				"options" : 
 				[
 					{
@@ -175,15 +187,15 @@
 						"value" : "none"
 					}
 				],
-				"order" : 117,
+				"order" : 118,
 				"text" : "Extra Padding (for TaskBar)",
 				"type" : "combo",
 				"value" : "none"
 			},
 			"imageblendmode" : 
 			{
-				"condition" : "changeimage.value != \"none\"",
-				"index" : 12,
+				"condition" : "imageproperties.value",
+				"index" : 13,
 				"options" : 
 				[
 					{
@@ -195,15 +207,15 @@
 						"value" : "overlay"
 					}
 				],
-				"order" : 112,
+				"order" : 113,
 				"text" : "Image Blend Mode",
 				"type" : "combo",
-				"value" : "normal"
+				"value" : "overlay"
 			},
 			"imageposition" : 
 			{
-				"condition" : "changeimage.value != \"none\"",
-				"index" : 11,
+				"condition" : "imageproperties.value",
+				"index" : 12,
 				"options" : 
 				[
 					{
@@ -247,15 +259,23 @@
 						"value" : "custom"
 					}
 				],
-				"order" : 111,
+				"order" : 112,
 				"text" : "Image Position",
 				"type" : "combo",
-				"value" : "bottom right"
+				"value" : "center center"
+			},
+			"imageproperties" : 
+			{
+				"index" : 9,
+				"order" : 109,
+				"text" : "Image Properties",
+				"type" : "bool",
+				"value" : false
 			},
 			"imagesize" : 
 			{
-				"condition" : "changeimage.value != \"none\"",
-				"index" : 9,
+				"condition" : "imageproperties.value",
+				"index" : 10,
 				"options" : 
 				[
 					{
@@ -271,19 +291,19 @@
 						"value" : "custom"
 					}
 				],
-				"order" : 109,
+				"order" : 110,
 				"text" : "Image Size",
 				"type" : "combo",
-				"value" : "contain"
+				"value" : "cover"
 			},
 			"paddingvalue" : 
 			{
 				"condition" : "extrapaddingfortaskbar.value != \"none\"",
 				"fraction" : false,
-				"index" : 18,
+				"index" : 19,
 				"max" : 200,
 				"min" : 0,
-				"order" : 118,
+				"order" : 119,
 				"text" : "Padding Value",
 				"type" : "slider",
 				"value" : 63
@@ -303,12 +323,12 @@
 			},
 			"scaleimage" : 
 			{
-				"condition" : "changeimage.value != \"none\" && imagesize.value == \"custom\"",
+				"condition" : "imageproperties.value && imagesize.value == \"custom\"",
 				"fraction" : true,
-				"index" : 10,
+				"index" : 11,
 				"max" : 2,
 				"min" : 0.1,
-				"order" : 110,
+				"order" : 111,
 				"precision" : 2,
 				"step" : 0.05,
 				"text" : "Scale Image",
@@ -328,7 +348,7 @@
 				"order" : 101,
 				"text" : "Seconds Bar",
 				"type" : "bool",
-				"value" : true
+				"value" : false
 			},
 			"smoothbar" : 
 			{

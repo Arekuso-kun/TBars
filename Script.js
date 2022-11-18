@@ -4,6 +4,10 @@ var ToggleSmoothBar = true;
 var PaddingValue = 63;
 var PaddingPosition = "none";
 var ClockFormat = "12";
+var LastBackgroundBlendMode = "overlay";
+var LastBackgroundSize = "cover";
+var LastBackgroundPosition = "center center";
+var PropertiesButtonPressed = false;
 
 window.wallpaperPropertyListener = {
     applyUserProperties: function (properties) {
@@ -60,18 +64,59 @@ window.wallpaperPropertyListener = {
             if (properties.changeimage.value == "none") {
                 background.style.backgroundImage = "url()" 
             }
+            if (properties.changeimage.value == "pixelart") {
+                background.style.backgroundImage = "url(bg/PixelArt.jpg)";
+                if (!PropertiesButtonPressed) {
+                    background.style.backgroundBlendMode = "normal";
+                    background.style.backgroundSize = "cover";
+                    background.style.backgroundPosition = "center center";
+                }
+            }
             if (properties.changeimage.value == "landscape") {
                 background.style.backgroundImage = "url(bg/Landscape.jpg)";
-                background.style.backgroundBlendMode = "normal";
-                background.style.backgroundSize = "cover";
-                background.style.backgroundPosition = "center center";
+                if (!PropertiesButtonPressed) {
+                    background.style.backgroundBlendMode = "overlay";
+                    background.style.backgroundSize = "cover";
+                    background.style.backgroundPosition = "center center";
+                }
+            }
+            if (properties.changeimage.value == "animegirl") {
+                background.style.backgroundImage = "url(bg/AnimeGirl.jpg)";
+                if (!PropertiesButtonPressed) {
+                    background.style.backgroundBlendMode = "normal";
+                    background.style.backgroundSize = "cover";
+                    background.style.backgroundPosition = "center center";
+                }
+            }if (properties.changeimage.value == "sakura") {
+                background.style.backgroundImage = "url(bg/Sakura.jpg)";
+                if (!PropertiesButtonPressed) {
+                    background.style.backgroundBlendMode = "normal";
+                    background.style.backgroundSize = "cover";
+                    background.style.backgroundPosition = "center center";
+                }
             }
             if (properties.changeimage.value == "manga") {
-                background.style.backgroundImage = "url(bg/Power.png)" 
-                background.style.backgroundBlendMode = "overlay";
-                background.style.backgroundSize = "contain";
-                background.style.backgroundPosition = "bottom right";
+                background.style.backgroundImage = "url(bg/Power.png)";
+                if (!PropertiesButtonPressed) {
+                    background.style.backgroundBlendMode = "overlay";
+                    background.style.backgroundSize = "contain";
+                    background.style.backgroundPosition = "bottom right";
+                }
             }
+            if (properties.changeimage.value == "custom") {
+                if (!PropertiesButtonPressed) {
+                    background.style.backgroundBlendMode = "overlay";
+                    background.style.backgroundSize = "cover";
+                    background.style.backgroundPosition = "center center";
+                }
+            }
+        }
+
+        if (properties.imageproperties) {
+            PropertiesButtonPressed = properties.imageproperties.value;
+            background.style.backgroundBlendMode = LastBackgroundBlendMode;
+            background.style.backgroundSize = LastBackgroundSize;
+            background.style.backgroundPosition = LastBackgroundPosition;
         }
 
         if (properties.customimage) {
@@ -80,23 +125,24 @@ window.wallpaperPropertyListener = {
 
         if (properties.imageblendmode) {
             background.style.backgroundBlendMode = properties.imageblendmode.value;
+            LastBackgroundBlendMode = properties.imageblendmode.value;
         }
 
         if (properties.scaleimage) {
             background.style.backgroundSize = `${(properties.scaleimage.value * 100).toFixed(0)}%`;
+            LastBackgroundSize = `${(properties.scaleimage.value * 100).toFixed(0)}%`;
         }
 
         if (properties.imagesize) {
-            if (properties.imagesize.value == "contain") {
-                background.style.backgroundSize = "contain";
-            }
-            if (properties.imagesize.value == "cover") {
-                background.style.backgroundSize = "cover";
+            if (properties.imagesize.value != "custom") {
+                background.style.backgroundSize = properties.imagesize.value;
+                LastBackgroundSize = properties.imagesize.value;
             }
         }
 
         if (properties.imageposition) {
             background.style.backgroundPosition = properties.imageposition.value;
+            LastBackgroundPosition = properties.imageposition.value;
         }
 
         if (properties.extrapaddingfortaskbar) {
@@ -214,6 +260,10 @@ setInterval(function () {
 
     let miliseconds = (d_now.getTime() - d_zero.getTime()) % 1000;
     let seconds = d_now.getSeconds();
+
+    if (ToggleSmoothBar)
+        seconds += miliseconds / 1000;
+
     let minutes = d_now.getMinutes() + seconds / 60;
     let hours = d_now.getHours() + minutes / 60;
 
@@ -223,9 +273,6 @@ setInterval(function () {
 
     let days_month = d_now.getDate() - 1 + hours / 24;
     let days_year = -1 + hours / 24;
-
-    if (ToggleSmoothBar)
-        seconds += miliseconds / 1000;
 
     document.getElementById("second-text").innerHTML = "Second: " + Number(miliseconds / 10).toFixed(2) + "%";
     document.getElementById("second-bar").style.width = miliseconds / 10 + "%";
