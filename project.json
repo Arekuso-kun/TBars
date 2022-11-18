@@ -7,8 +7,8 @@
 			"accent" : 
 			{
 				"condition" : "color.value == \"custom\"",
-				"index" : 11,
-				"order" : 111,
+				"index" : 15,
+				"order" : 115,
 				"text" : "Accent",
 				"type" : "color",
 				"value" : "0.16470588235294117 0.16470588235294117 0.3568627450980392"
@@ -16,39 +16,85 @@
 			"background" : 
 			{
 				"condition" : "color.value == \"custom\"",
-				"index" : 10,
-				"order" : 110,
+				"index" : 14,
+				"order" : 114,
 				"text" : "Background",
 				"type" : "color",
 				"value" : "0.08235294117647059 0.08235294117647059 0.1803921568627451"
 			},
 			"bars" : 
 			{
-				"index" : 2,
-				"order" : 102,
+				"index" : 3,
+				"order" : 103,
 				"text" : "Bars",
 				"type" : "bool",
 				"value" : true
 			},
+			"changeimage" : 
+			{
+				"index" : 7,
+				"options" : 
+				[
+					{
+						"label" : "None",
+						"value" : "none"
+					},
+					{
+						"label" : "Landscape",
+						"value" : "landscape"
+					},
+					{
+						"label" : "Manga (Power)",
+						"value" : "manga"
+					},
+					{
+						"label" : "Custom",
+						"value" : "custom"
+					}
+				],
+				"order" : 107,
+				"text" : "Change Image",
+				"type" : "combo",
+				"value" : "none"
+			},
 			"christmasbar" : 
 			{
-				"index" : 4,
-				"order" : 104,
+				"index" : 5,
+				"order" : 105,
 				"text" : "Christmas Bar",
 				"type" : "bool",
 				"value" : true
 			},
 			"clockdate" : 
 			{
-				"index" : 3,
-				"order" : 103,
+				"index" : 4,
+				"order" : 104,
 				"text" : "Clock & Date",
 				"type" : "bool",
 				"value" : true
 			},
+			"clockformat" : 
+			{
+				"index" : 0,
+				"options" : 
+				[
+					{
+						"label" : "12 hour",
+						"value" : "12"
+					},
+					{
+						"label" : "24 hour",
+						"value" : "24"
+					}
+				],
+				"order" : 100,
+				"text" : "Clock Format",
+				"type" : "combo",
+				"value" : "12"
+			},
 			"color" : 
 			{
-				"index" : 9,
+				"index" : 13,
 				"options" : 
 				[
 					{
@@ -80,23 +126,32 @@
 						"value" : "custom"
 					}
 				],
-				"order" : 109,
+				"order" : 113,
 				"text" : "Color",
 				"type" : "combo",
 				"value" : "default"
 			},
+			"customimage" : 
+			{
+				"condition" : "changeimage.value == \"custom\"",
+				"index" : 8,
+				"order" : 108,
+				"text" : "Custom Image",
+				"type" : "file",
+				"value" : ""
+			},
 			"elements" : 
 			{
 				"condition" : "color.value == \"custom\"",
-				"index" : 12,
-				"order" : 112,
+				"index" : 16,
+				"order" : 116,
 				"text" : "Elements",
 				"type" : "color",
 				"value" : "0.9254901960784314 0.9294117647058824 0.9490196078431372"
 			},
 			"extrapaddingfortaskbar" : 
 			{
-				"index" : 13,
+				"index" : 17,
 				"options" : 
 				[
 					{
@@ -120,14 +175,35 @@
 						"value" : "none"
 					}
 				],
-				"order" : 113,
+				"order" : 117,
 				"text" : "Extra Padding (for TaskBar)",
 				"type" : "combo",
 				"value" : "none"
 			},
+			"imageblendmode" : 
+			{
+				"condition" : "changeimage.value != \"none\"",
+				"index" : 12,
+				"options" : 
+				[
+					{
+						"label" : "Normal",
+						"value" : "normal"
+					},
+					{
+						"label" : "Overlay",
+						"value" : "overlay"
+					}
+				],
+				"order" : 112,
+				"text" : "Image Blend Mode",
+				"type" : "combo",
+				"value" : "normal"
+			},
 			"imageposition" : 
 			{
-				"index" : 8,
+				"condition" : "changeimage.value != \"none\"",
+				"index" : 11,
 				"options" : 
 				[
 					{
@@ -171,14 +247,15 @@
 						"value" : "custom"
 					}
 				],
-				"order" : 108,
+				"order" : 111,
 				"text" : "Image Position",
 				"type" : "combo",
 				"value" : "bottom right"
 			},
 			"imagesize" : 
 			{
-				"index" : 6,
+				"condition" : "changeimage.value != \"none\"",
+				"index" : 9,
 				"options" : 
 				[
 					{
@@ -194,7 +271,7 @@
 						"value" : "custom"
 					}
 				],
-				"order" : 106,
+				"order" : 109,
 				"text" : "Image Size",
 				"type" : "combo",
 				"value" : "contain"
@@ -203,10 +280,10 @@
 			{
 				"condition" : "extrapaddingfortaskbar.value != \"none\"",
 				"fraction" : false,
-				"index" : 14,
+				"index" : 18,
 				"max" : 200,
 				"min" : 0,
-				"order" : 114,
+				"order" : 118,
 				"text" : "Padding Value",
 				"type" : "slider",
 				"value" : 63
@@ -214,26 +291,26 @@
 			"scale" : 
 			{
 				"fraction" : true,
-				"index" : 5,
+				"index" : 6,
 				"max" : 2,
 				"min" : 0.1,
-				"order" : 105,
+				"order" : 106,
 				"precision" : 2,
-				"step" : 0.1,
+				"step" : 0.05,
 				"text" : "Scale",
 				"type" : "slider",
 				"value" : 1
 			},
 			"scaleimage" : 
 			{
-				"condition" : "imagesize.value == \"custom\"",
+				"condition" : "changeimage.value != \"none\" && imagesize.value == \"custom\"",
 				"fraction" : true,
-				"index" : 7,
+				"index" : 10,
 				"max" : 2,
 				"min" : 0.1,
-				"order" : 107,
+				"order" : 110,
 				"precision" : 2,
-				"step" : 0.1,
+				"step" : 0.05,
 				"text" : "Scale Image",
 				"type" : "slider",
 				"value" : 1
@@ -247,16 +324,16 @@
 			},
 			"secondsbar" : 
 			{
-				"index" : 0,
-				"order" : 100,
+				"index" : 1,
+				"order" : 101,
 				"text" : "Seconds Bar",
 				"type" : "bool",
 				"value" : true
 			},
 			"smoothbar" : 
 			{
-				"index" : 1,
-				"order" : 101,
+				"index" : 2,
+				"order" : 102,
 				"text" : "Smooth Bar",
 				"type" : "bool",
 				"value" : true

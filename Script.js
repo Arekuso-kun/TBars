@@ -3,6 +3,7 @@ const root = document.querySelector(":root");
 var ToggleSmoothBar = true;
 var PaddingValue = 63;
 var PaddingPosition = "none";
+var ClockFormat = "12";
 
 window.wallpaperPropertyListener = {
     applyUserProperties: function (properties) {
@@ -37,6 +38,10 @@ window.wallpaperPropertyListener = {
             }
         }
 
+        if (properties.clockformat) {
+            ClockFormat = properties.clockformat.value;
+        }
+
         if (properties.christmasbar) {
             if (properties.christmasbar.value) {
                 document.querySelector(".container-christmas").style.display = "block";
@@ -49,6 +54,32 @@ window.wallpaperPropertyListener = {
         if (properties.scale) {
             document.querySelector(".container-left").style.transform = `scale(${properties.scale.value})`;
             document.querySelector(".container-right").style.transform = `scale(${properties.scale.value})`;
+        }
+
+        if (properties.changeimage) {
+            if (properties.changeimage.value == "none") {
+                background.style.backgroundImage = "url()" 
+            }
+            if (properties.changeimage.value == "landscape") {
+                background.style.backgroundImage = "url(bg/Landscape.jpg)";
+                background.style.backgroundBlendMode = "normal";
+                background.style.backgroundSize = "cover";
+                background.style.backgroundPosition = "center center";
+            }
+            if (properties.changeimage.value == "manga") {
+                background.style.backgroundImage = "url(bg/Power.png)" 
+                background.style.backgroundBlendMode = "overlay";
+                background.style.backgroundSize = "contain";
+                background.style.backgroundPosition = "bottom right";
+            }
+        }
+
+        if (properties.customimage) {
+            background.style.backgroundImage = `url(${'file:///' + properties.customimage.value})`;
+        }
+
+        if (properties.imageblendmode) {
+            background.style.backgroundBlendMode = properties.imageblendmode.value;
         }
 
         if (properties.scaleimage) {
@@ -147,6 +178,23 @@ window.wallpaperPropertyListener = {
     },
 };
 
+function f_ClockFormat(date) {
+    let hh = date.getHours();
+    let mm = date.getMinutes();
+
+    let format = '';
+    if (ClockFormat == "12") {
+        format = hh >= 12 ? 'PM' : 'AM';
+        hh = hh % 12;
+    }
+    
+    hh = hh < 10 ? "0" + hh : hh;
+    mm = mm < 10 ? "0" + mm : mm;
+
+    let strTime = hh + ':' + mm + ' ' + format;
+    return strTime;
+  }
+
 let wL = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 let mL = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -208,14 +256,8 @@ setInterval(function () {
     document.getElementById("year-bar").style.width = days_year * (100 / (year_lenght)) + "%";
 
     document.querySelector(".week_day").innerHTML = wL[d_now.getDay()];
-
-    let hh = d_now.getHours();
-    let mm = d_now.getMinutes();
-    if (hh < 10)
-        hh = "0" + hh;
-    if (mm < 10)
-        mm = "0" + mm;
-    document.querySelector(".clock").innerHTML = hh + ":" + mm;
+    
+    document.querySelector(".clock").innerHTML = f_ClockFormat(d_now);
     document.querySelector(".date").innerHTML = d_now.getDate() + " " + mS[d_now.getMonth()] + " " + d_now.getFullYear();
 
     let one_year = d_christmas.getTime() - d_last_christmas.getTime();
